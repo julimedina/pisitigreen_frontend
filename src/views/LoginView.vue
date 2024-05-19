@@ -47,7 +47,7 @@
             
         </div>
 
-        <div class="col form-registro">
+        <div class="col form-registro mb-5 ms-3 me-3">
     
     <div class="card card-body mt-5 form-registro">
 
@@ -131,19 +131,24 @@
     }
     
     .container-inicio-sesion{
+      background-color: #6495ED;
       border: solid 1px lightgray;
       margin-left: 10px;
       margin-right: 10px;
       margin-bottom: 10px;
       border-top-left-radius: 20px;
        border-bottom-left-radius: 20px;
+       border-top-right-radius: 5px;
+       border-bottom-right-radius: 5px;
+       -webkit-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
+      -moz-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
+      box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
     
     }
     
     .fondo{
         background-image: url("../assets/login.jpeg");
         background-position: center center;
-
        border-top-left-radius: 20px;
        border-bottom-left-radius: 20px;
        border-top-right-radius: 250px;
@@ -161,6 +166,7 @@
     }
     .form-registro{
       border: none;
+      border-radius: 5px;
     }
     </style>
     

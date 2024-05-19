@@ -1,7 +1,7 @@
 <template>
 <div class="text-center mt-5">
   <div class="row container-inicio-sesion ">
-    <div class="col form-registro">
+    <div class="col form-registro mb-5 ms-3 me-3">
 
         <div class="card card-body mt-5 form-registro">
 
@@ -135,7 +135,13 @@ h1{
   margin-right: 10px;
   margin-bottom: 10px;
   border-top-right-radius: 20px;
-   border-bottom-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+ -webkit-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
+ -moz-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
+ box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
+ background-color: #6495ED;
 
 }
 
@@ -157,7 +163,7 @@ h1{
 .fondo h1{
   font-size: 60px;
 }
-.form-registro{
-  border: none;
-}
+
+
+
 </style>

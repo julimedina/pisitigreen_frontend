@@ -1,6 +1,6 @@
 <template>
-<div class="row">
-    <div class=" col mt-5 ms-5 container-perfil">
+<div class="row container">
+    <div class=" col mt-5 ms-5 container-perfil bg-light">
         <div class="d-flex flex-column mb-3 ">
                 <div class="p-2 d-flex justify-center">
                     <img src="../assets/feed.jpg" class="img-perfil" alt="...">
@@ -24,12 +24,12 @@
 
 
     </div> 
-    <div class="col-sm-5 ms-0 me-0 mt-5 ">
+    <div class="col-sm-5 ms-3  mt-5 ">
 
         <div>
-            <div class=" row-sm d-flex flex-column mb-3 container-publicacion  ">
+            <div class=" row-sm d-flex flex-column mb-3 container-publicacion bg-light ">
                 <div class="p-2 mt-5 d-flex justify-center">
-                    <textarea class="form-control bg-light ms-4"  placeholder="Qué estás pensando?" aria-label="With textarea" ></textarea>
+                    <textarea class="form-control bg-light ms-4 me-4"  placeholder="Qué estás pensando?" aria-label="With textarea" ></textarea>
                 </div>
             
                 <div class="row p-2">
@@ -40,7 +40,7 @@
         </div>
     </div>
    
-        <div class="d-flex flex-column mb-3 container-publicacion ">
+        <div class="d-flex flex-column mb-3 container-publicacion bg-light">
             <div class="row ">
                 <div class=" col col-lg-2  ">
                     <img src="../assets/feed.jpg" class=" ms-3 mt-3 img-thumbnail img-min-perfil" alt="...">
@@ -93,9 +93,6 @@
 
 
             </div>
-            
-               
-
 
            
         </div>
@@ -110,10 +107,10 @@
 
 
 
-    <div class="col  mt-5 ms-0">
+    <div class="col  mt-5">
 
 <div>
-    <div class=" row-sm d-flex flex-column mb-3 container-publicacion  ">
+    <div class=" row-sm d-flex flex-column mb-3 container-publicacion bg-light">
         <div class="text-center mt-5">
             <strong>
                 <h1>
@@ -126,7 +123,7 @@
     
         <div class="row">
             <div class="col">
-                <img src="../assets/feed.jpg" class=" ms-3 mt-3 img-thumbnail img-min-perfil" alt="...">
+                <img src="../assets/feed.jpg" class=" ms-3 mt-3  img-thumbnail img-min-perfil" alt="...">
 
             </div>
             <div class="col mt-5">
@@ -134,7 +131,7 @@
 
             </div>
 
-            <div class="col mt-5 mb-5 ms-5 me-5">
+            <div class="col mt-5 mb-5 me-3">
                 <button type="button" class="btn btn-outline-primary">Mostrar</button>
 
             </div>
@@ -144,7 +141,7 @@
 </div>
 
 <div>
-    <div class=" row-sm d-flex flex-column mb-3 container-publicacion  ">
+    <div class=" row-sm d-flex flex-column mb-3 container-publicacion bg-light">
         <div class="text-center mt-5">
             <strong>
                 <h1>
@@ -168,7 +165,7 @@
             </div>
            
 
-            <div class="col mt-5 mb-5 ms-5 me-5">
+            <div class="col mt-5 mb-5 ms-5">
                 <button type="button" class="btn btn-outline-primary">Explorar</button>
 
             </div>
@@ -191,6 +188,9 @@
 .container-perfil{
     border: 1px lightgrey solid;
     border-radius: 5px;
+    -webkit-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
 }
 
 
@@ -200,18 +200,9 @@
     border-radius: 150px;
 }
 
-.container-publicacion{
-    
-    border: 1px lightgrey solid;
-    border-radius: 5px;
-}
 
 
 
-.img-min-perfil{
-    border-radius: 150px;
-    height: 80px;
-    width: 80px;
-}
+
 
 </style>
