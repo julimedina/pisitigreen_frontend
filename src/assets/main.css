@@ -25,3 +25,8 @@ body{
     border-radius: 5px;
 
 }
+
+textarea{
+    background-color: rgb(243, 237, 237) !important;
+    
+}

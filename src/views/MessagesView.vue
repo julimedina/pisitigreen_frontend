@@ -47,7 +47,7 @@
     <div class="col mb-3 container-publicacion bg-light ">
         <div class="row ">
             <div class=" col p-2 mt-3 d-flex justify-center ">
-                <textarea class="form-control bg-light ms-4 me-4"  placeholder="Qué quieres decir??" aria-label="With textarea" ></textarea>
+                <textarea class="form-control  ms-4 me-4"  placeholder="Qué quieres decir??" aria-label="With textarea" ></textarea>
 
             </div>
         

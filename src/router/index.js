@@ -3,6 +3,7 @@ import SignUpView from '../views/SignUpView.vue'
 import LoginView from '../views/LoginView.vue'
 import FeedView from '../views/FeedView.vue'
 import MessagesView from '../views/MessagesView.vue'
+import SearchView from '../views/SearchView.vue'
 
 
 const routes = [
@@ -17,6 +18,12 @@ const routes = [
     path: '/Messages',
     name: 'Messages',
     component: MessagesView
+  },
+
+  {
+    path: '/Search',
+    name: 'Search',
+    component: SearchView
   },
   {
     path: '/SignUp',

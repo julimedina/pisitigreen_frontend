@@ -1,27 +1,8 @@
 <template>
 <div class="row container">
     <div class=" col mt-5 mb-3 ms-5 container-perfil bg-light">
-        <div class="d-flex flex-column mb-3 ">
-                <div class="p-2 d-flex justify-center">
-                    <img src="../assets/feed.jpg" class="img-perfil" alt="...">
-
-                </div>
-                <div class="p-2 d-flex justify-center">
-                    <p>
-                        <strong>Juliana Medina</strong>
-                    </p>
-
-                </div>
-                <div class="p-2 d-flex justify-content-evenly">
-                   <p>
-                        182 Amigos
-                   </p>
-                   <p>
-                        120 posts
-                   </p> 
-                </div>
-        </div>
-
+        
+        <PerfilContainer/>
 
     </div> 
     <div class="col-sm-5 ms-3  mt-5 ">
@@ -29,7 +10,7 @@
         <div>
             <div class=" row-sm d-flex flex-column mb-3 container-publicacion bg-light ">
                 <div class="p-2 mt-5 d-flex justify-center">
-                    <textarea class="form-control bg-light ms-4 me-4"  placeholder="Qué estás pensando?" aria-label="With textarea" ></textarea>
+                    <textarea class="form-control  ms-4 me-4"  placeholder="Qué estás pensando?" aria-label="With textarea" ></textarea>
                 </div>
             
                 <div class="row p-2">
@@ -115,12 +96,14 @@
 <script>
 import PersonasQueQuizasConozcas from '../components/PersonasQueQuizaConozcas.vue';
 import TrendsContainer from '../components/TrendsContainer.vue';
+import PerfilContainer from '@/components/PerfilContainer.vue';
 export default{
   name:'Feed',
 
   components:{
     PersonasQueQuizasConozcas,
-    TrendsContainer
+    TrendsContainer,
+    PerfilContainer
     
   }
 }
@@ -128,26 +111,3 @@ export default{
 </script>
 
 
-<style scoped>
-
-.container-perfil{
-    border: 1px lightgrey solid;
-    border-radius: 5px;
-    -webkit-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
-}
-
-
-.img-perfil{
-    width: 300px;
-    height: 300px;
-    border-radius: 150px;
-}
-
-
-
-
-
-
-</style>
