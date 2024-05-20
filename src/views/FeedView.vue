@@ -1,6 +1,6 @@
 <template>
 <div class="row container">
-    <div class=" col mt-5 ms-5 container-perfil bg-light">
+    <div class=" col mt-5 mb-3 ms-5 container-perfil bg-light">
         <div class="d-flex flex-column mb-3 ">
                 <div class="p-2 d-flex justify-center">
                     <img src="../assets/feed.jpg" class="img-perfil" alt="...">
@@ -33,8 +33,8 @@
                 </div>
             
                 <div class="row p-2">
-                   <div class="col-sm ms-5 mb-3"><button type="button" class="btn btn-outline-primary btn-lg">Adjuntar imagen</button></div> 
-                   <div class="col-sm  ms-5 mb-3"><button type="button" class="btn btn-outline-secondary btn-lg">Posts</button></div> 
+                   <div class="col-sm ms-5 mb-3"><button type="button" class="btn btn-outline-primary ">Adjuntar imagen</button></div> 
+                   <div class="col-sm  ms-5 mb-3"><button type="button" class="btn btn-outline-secondary ">Posts</button></div> 
                   
                 </div>  
         </div>

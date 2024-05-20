@@ -131,7 +131,7 @@
     }
     
     .container-inicio-sesion{
-      background-color: #6495ED;
+      background-color: #87CEFA;
       border: solid 1px lightgray;
       margin-left: 10px;
       margin-right: 10px;

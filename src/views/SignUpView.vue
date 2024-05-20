@@ -141,13 +141,15 @@ h1{
  -webkit-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
  -moz-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
  box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
- background-color: #6495ED;
+ background-color: #87CEFA;
 
 }
 
 .fondo{
-    background-image: url("../assets/siginUp.jpg");
+    background-image: url("../assets/siginUp2.jpg");
     background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
    border-top-left-radius: 250px;
    border-bottom-left-radius: 250px;
    border-top-right-radius: 20px;

@@ -28,11 +28,14 @@
     
         <div class="row">
             <div class="col">
-                <div class=" row-sm d-flex flex-column mb-3 container-publicacion bg-light  ">
+                <div class=" row-sm mb-3 p-5   container-publicacion bg-light  ">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam temporibus sapiente deleniti nisi amet consequatur placeat vel sit magni culpa autem, veritatis, facilis labore? Non voluptatem hic sint quos ratione.</p>
             <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem soluta, provident reprehenderit ab minima! Laboriosam, officiis maxime. Iusto atque consequatur tempora quae neque unde dicta nulla autem accusamus officiis?
-                
+
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Est molestias, unde aliquid alias ipsum officiis eveniet modi corporis illum accusantium facilis similique totam libero incidunt molestiae neque amet, qui quos.
             </p>
                  </div>
             </div>
@@ -74,15 +77,3 @@
    
 </template>
 
-
-<style scoped>
-
-body{
-    background-image: url("../assets/fondo.jpg");
-    
-    background-repeat: no-repeat;
-    background-size:cover;
-    
-}
-
-</style>

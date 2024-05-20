@@ -7,6 +7,8 @@ body{
     background-image: url("../assets/fondo2.jpg");
     background-repeat: no-repeat;
     background-size:cover;
+
+    font-family: "Poppins";
     
     
 }
@@ -21,7 +23,5 @@ body{
     
     border: 1px lightgrey solid;
     border-radius: 5px;
-    -webkit-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
-box-shadow: 10px 10px 16px 3px rgba(0,0,0,0.75);
+
 }
