@@ -5,7 +5,7 @@
 
         <div class="card card-body mt-5 form-registro">
 
-<form  id="task-form" action="" method="POST" >
+<form  v-on:submit.prevent="$event=> submitForm" >
 
 
 <div class="row ">
@@ -18,7 +18,7 @@
    <strong><h1>Registrarse</h1></strong> 
     <br>
     <div class=" form-group  d-flex justify-center">
-      <input type="text" class="form-control bg-stone-300" style="width: 60%;"  name="Nombre" autofocus require placeholder="Nombre">
+      <input v-model="form.name" type="text" class="form-control bg-stone-300" style="width: 60%;"  name="Nombre" autofocus require placeholder="Nombre">
 
     </div>
   </div>
@@ -32,7 +32,7 @@
 <div class="row">
   <div class="col-sm d-flex justify-center form-group">
     
-    <input  type="email" class="form-control  bg-stone-300" style="width: 60%;"  name="Correo" require  placeholder="Correo Electrónico">
+    <input v-model="form.email" type="email" class="form-control  bg-stone-300" style="width: 60%;"  name="Correo" require  placeholder="Correo Electrónico">
   </div>
  
 </div>
@@ -42,7 +42,7 @@
  
   <div class="col-sm d-flex justify-center form-group ">
    
-    <input type="password" class="form-control  bg-stone-300" style="width: 60%;" name="Contraseña" require placeholder="Contraseña">
+    <input v-model="form.password1" type="password" class="form-control  bg-stone-300" style="width: 60%;" name="Contraseña" require placeholder="Contraseña">
   </div>
  
 </div>
@@ -52,8 +52,19 @@
 <div class="row">
   <div class="col-sm d-flex justify-center form-group">
     
-    <input type="password" class="form-control  bg-stone-300" style="width: 60%;" name="Repetir Contrasena" placeholder="Repite la contraseña" >
+    <input v-model="form.password2" type="password" class="form-control  bg-stone-300" style="width: 60%;" name="Repetir Contrasena" placeholder="Repite la contraseña" >
   </div>
+
+  <template v-if="errors.length > 0">
+    <div class="bg-danger">
+      <p v-for="error in errors" v-bind:key="error">
+        {{error}}
+
+      </p>
+
+    </div>
+
+  </template>
   
 
 </div>
@@ -169,3 +180,73 @@ h1{
 
 
 </style>
+
+
+<script>
+
+import axios from 'axios'
+import { useToastStore } from '@/store/toast';
+export default{
+  setup(){
+    const toastStore = useToastStore()
+    return{
+      toastStore
+    }
+  },
+  data(){
+    return{
+      form:{
+        email: '',
+        name:'',
+        password1:'',
+        password2:''
+      },
+
+      errors:[],
+    }
+  },
+  methods: {
+    submitForm(){
+      this.errors = []
+      if (this.form.email=== ''){
+        this.errors.push(' Falta tu correo ')
+      }
+
+      if (this.form.name === ''){
+        this.errors.push(' Falta tu nombre ')
+      }
+      if(this.form.password1 === ''){
+        this.errors.push('Falta tu contraseña')
+      }
+
+      if (this.form.password1 !== this.form.password2){
+        this.errors.push('La contraseña no es igual')
+      }
+      if (this.errors.length == 0){
+        axios
+          .post('/api/signup/' , this.form)
+          .then (response =>{
+            if  (response.data.message === 'success'){
+              this.toastStore.showToast(5000, 'El usuario fue registrado. Por favor inicie sesión')
+
+              this.form.email = ''
+              this.form.name = ''
+              this.form.password1 = ''
+              this.form.password2 = ''
+
+            }else{
+              this.toastStore.showToast(5000, 'Algo salió mal. Por favor vuelve a intentarlo')
+            }
+
+          })
+          .catch (error =>{
+            console.log('error',error)
+          })
+      }
+    }
+  }
+
+}
+
+
+</script>
