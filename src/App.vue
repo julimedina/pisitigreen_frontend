@@ -1,10 +1,10 @@
 <template>
     <NavPrincipal/>
 
-  
+ 
   <router-view/>
+ 
   <Toast/>
-  
 </template>
 
 

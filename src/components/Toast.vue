@@ -1,14 +1,12 @@
 <script setup>
-import store from '@/store';
-import { useToastStore } from '@/stores/toast'
+
+import { useToastStore } from '@/store/toast'
 const store = useToastStore()
-
-
 
 </script>
 
 <template>
-    <div v-if="store.visible" class="toast-container position-fixed bottom-0 end-0 p-3" :class="store.classes">
+    <div v-if="store.isVisible" class="transition ease-in-out delay-500 duration-500  toast-container position-fixed bottom-0 end-0 p-3" :class="store.classes">
         {{ store.message }}
         
 
