@@ -20,7 +20,70 @@
                 </div>  
         </div>
     </div>
+<<<<<<< Updated upstream
    
+=======
+
+
+    <div class="d-flex flex-column mb-3 container-publicacion bg-light" v-for="post in posts" v-bind:key>
+            <div class="row ">
+                <div class=" col col-lg-2">
+                    <img src="../assets/feed.jpg" class=" ms-3 mt-3 img-thumbnail img-min-perfil" alt="...">
+
+                </div>
+                <div class="col">
+                    <strong><h1 class="md-auto mt-5">{{ post.created_by.name }}</h1></strong>
+                </div>
+                <div class="col">
+                    <p class="mt-5 ms-5">hace {{ post.created_at_formatted }}</p>
+                </div>
+                
+            </div> 
+            <div class="row">
+               
+                <div class="col p-4"  >
+                    {{ post.body }}
+                </div>
+                
+            </div>
+
+            
+
+            <div class="row d-flex justify-start ms-3 mb-4">
+                <div class="col-3">
+                    <a href="#">
+                        <span class="material-icons-outlined">
+                        thumb_up
+                    </span>
+                    <p>
+                        82 Likes
+
+                    </p>
+                    </a>
+                    
+                    
+                </div>
+
+                <div class="col-3 ">
+                   <a href="#">
+                    <span class="material-icons-outlined">
+                        sms
+                    </span>
+                    <p>
+                        0 comentarios
+
+                    </p>
+                   </a> 
+                    
+                </div>
+
+
+
+            </div>
+
+           
+        </div>
+>>>>>>> Stashed changes
         <div class="d-flex flex-column mb-3 container-publicacion bg-light">
             <div class="row ">
                 <div class=" col col-lg-2  ">
