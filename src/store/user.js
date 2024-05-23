@@ -35,7 +35,7 @@ export const useUserStore = defineStore({
 
         setToken(data){
             console.log('setToken', data)
-            this.user.acces = data.access
+            this.user.access = data.access
             this.user.refresh = data.refresh
             this.user.isAuthenticated = true
 
@@ -46,7 +46,7 @@ export const useUserStore = defineStore({
 
         removeToken(){
             console.log('removeToken')
-            this.user.acces = null
+            this.user.access = null
             this.user.refresh = null
             this.user.isAuthenticated = false
             this.user.id = false
