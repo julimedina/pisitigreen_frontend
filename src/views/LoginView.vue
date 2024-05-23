@@ -51,7 +51,7 @@
     
     <div class="card card-body mt-5 form-registro">
 
-<form  id="task-form" action="" method="POST" >
+<form  id="task-form" v-on:submit.prevent="submitForm" >
 
 
 <div class="row ">
@@ -75,7 +75,7 @@
 <div class="row">
 <div class="col-sm d-flex justify-center form-group">
 
-<input  type="email" class="form-control  bg-stone-300" style="width: 60%;"  name="Correo" require  placeholder="Correo Electrónico">
+<input v-model="form.email" type="email" class="form-control  bg-stone-300" style="width: 60%;"  name="email" require  placeholder="Correo Electrónico">
 </div>
 
 </div>
@@ -85,8 +85,20 @@
 
 <div class="col-sm d-flex justify-center form-group ">
 
-<input type="password" class="form-control  bg-stone-300" style="width: 60%;" name="Contraseña" require placeholder="Contraseña">
+<input v-model="form.password" type="password" class="form-control  bg-stone-300" style="width: 60%;" name="password" require placeholder="Contraseña">
 </div>
+
+
+<template v-if="errors.length > 0">
+    <div class="bg-danger">
+      <p v-for="error in errors" v-bind:key="error">
+        {{error}}
+
+      </p>
+
+    </div>
+
+  </template>
 
 </div>
 
@@ -96,8 +108,7 @@
 <div class="row">
 
 <div class="col d-flex d-flex justify-center justify-content-center">
-<input type="submit" Value="Iniciar sesión" name="guardar_registro" class="btn btn-primary"  id="btn-task-form">
-
+<button class="btn btn-primary">Iniciar sesión</button>
 </div>
 
 
@@ -125,7 +136,7 @@
     </div>
 </template>
     
-    <style scoped>
+<style scoped>
     h1{
       font-size: 25px;
     }
@@ -170,3 +181,67 @@
     }
     </style>
     
+
+    <script>
+    import axios from 'axios';
+    import {useUserStore} from '@/store/user'
+     export default{
+
+      setup(){
+        const userStore = useUserStore()
+
+        return{
+          userStore
+        }
+      },
+
+        data (){
+
+          return{
+            form:{
+              email:'',
+              password: '',
+            },
+            errors:[]
+          }
+
+        },
+
+        methods:{
+        async  submitForm(){
+
+            this.errors = []
+            if (this.form.email=== ''){
+              this.errors.push(' Falta tu correo ')
+            }
+
+            if (this.form.password === ''){
+              this.errors.push(' Falta tu contraseña ')
+            }
+            if (this.errors.length === 0){
+            await axios
+              .post('/api/login/' , this.form)
+              .then (response =>{
+                this.userStore.setToken(response.data)
+
+            axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.access;
+          })
+          .catch (error =>{
+            console.log('error',error)
+          })
+
+          await axios
+          .get('/api/me/')
+          .then (response=>{
+            this.userStore.setUserInfo(response.data)
+            this.$router.push('/feed')
+          })
+          .catch (error =>{
+            console.log('error',error)
+          })
+          }
+
+          }
+        }
+     }
+  </script>

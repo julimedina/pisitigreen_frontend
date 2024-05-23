@@ -74,8 +74,8 @@
 
 <div class="row">
 
-<div class="col d-flex d-flex justify-center justify-content-center">
-  <input type="submit" Value="Registrarse" name="guardar_registro" class="btn btn-primary"  id="btn-task-form">
+<div class="col  d-flex justify-center ">
+  <button  class="btn btn-primary">Registrarse</button>
 
 </div>
 
