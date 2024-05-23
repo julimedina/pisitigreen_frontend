@@ -25,6 +25,9 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
+        <p>
+          
+        </p>
       </div>
       <div class="flex flex-shrink-0 items-center">
           <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">

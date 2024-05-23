@@ -55,7 +55,7 @@
                         thumb_up
                     </span>
                     <p>
-                        82 Likes
+                        80 Likes
 
                     </p>
                     </a>
