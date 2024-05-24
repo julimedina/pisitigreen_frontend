@@ -1,219 +1,207 @@
 <template>
-    <div class="row container">
-        <div class=" col mt-5 mb-3 ms-5 container-perfil bg-light">
-            
-            <PerfilContainer/>
-    
-        </div> 
-        <div class="col-sm-5 ms-3  mt-5 ">
-    
-            <div>
-                <div class=" row-sm d-flex flex-column mb-3 container-publicacion bg-light ">
-                    <form action="" method="post" v-on:submit.prevent="submitForm">
-                    <div class="p-2 mt-5 d-flex justify-center">
-                        <textarea v-model="body" class="form-control  ms-4 me-4"  placeholder="Qué estás pensando?" aria-label="With textarea" ></textarea>
-                    </div>
+    <div class="max-w-7xl mx-auto grid grid-cols-4 gap-4">
+        <div class="main-left col-span-1">
+            <div class="p-4 bg-white border border-gray-200 text-center rounded-lg">
+                <img :src="user.get_avatar" class="mb-6 rounded-full">
                 
-                    <div class="row p-2">
-                       <div class="col-sm ms-5 mb-3"><button type="button" class="btn btn-outline-primary ">Adjuntar imagen</button></div> 
-                       <div class="col-sm  ms-5 mb-3"><button type="button" class="btn btn-outline-secondary ">Posts</button></div> 
-                      
-                    </div> 
-                </form> 
+                <p><strong>{{ user.name }}</strong></p>
+
+                <div class="mt-6 flex space-x-8 justify-around" v-if="user.id">
+                    <RouterLink :to="{name: 'friends', params: {id: user.id}}" class="text-xs text-gray-500">{{ user.friends_count }} Amigos</RouterLink>
+                    <p >{{ user.posts_count }} posts</p>
+                </div>
+
+                <div class="mt-6">
+                    <button 
+                        class="inline-block py-4 px-3 btn btn-success   " 
+                        @click="sendFriendshipRequest"
+                        v-if="userStore.user.id !== user.id && can_send_friendship_request"
+                    >
+                        Enviar Solicitud de Amistad
+                    </button>
+
+                    <button 
+                        class="inline-block mt-4 py-4 px-3 btn btn-success" 
+                        @click="sendDirectMessage"
+                        v-if="userStore.user.id !== user.id"
+                    >
+                        Enviar mensaje
+                    </button>
+
+                    <RouterLink 
+                        class="inline-block mr-2 py-4 px-3 btn btn-success" 
+                        to="/profile/edit"
+                        v-if="userStore.user.id === user.id"
+                    >
+                        Editar perfil
+                    </RouterLink>
+
+                    <button 
+                        class="inline-block py-4 px-3 bg-red-600 text-xs text-white rounded-lg" 
+                        @click="logout"
+                        v-if="userStore.user.id === user.id"
+                    >
+                        Cerrar sesión
+                    </button>
+                </div>
             </div>
         </div>
-       
-    
-    
-        <div class="d-flex flex-column mb-3 container-publicacion bg-light">
-                <div class="row ">
-                    <div class=" col col-lg-2  ">
-                        <img src="../assets/feed.jpg" class=" ms-3 mt-3 img-thumbnail img-min-perfil" alt="...">
-    
-                    </div>
-                    <div class="col">
-                        <strong><h1 class="md-auto mt-5">{{ post.created_by.name }}</h1></strong>
-                    </div>
-                    <div class="col">
-                        <p class="mt-5 ms-5">hace {{ post.created_at_formatted }}</p>
-                    </div>
-                    
-                </div> 
-                <div class="row">
-                   
-                    <div class="col p-4" v-for="post in posts" v-bind:key >
-                        {{ post.body }}
-                    </div>
-                    
-                </div>
-    
+
+        <div class="main-center col-span-2 space-y-4">
+            <div 
                 
-    
-                <div class="row d-flex justify-start ms-3 mb-4">
-                    <div class="col-3">
-                        <a href="#">
-                            <span class="material-icons-outlined">
-                            thumb_up
-                        </span>
-                        <p>
-                            80 Likes
-    
-                        </p>
-                        </a>
-                        
-                        
-                    </div>
-    
-                    <div class="col-3 ">
-                       <a href="#">
-                        <span class="material-icons-outlined">
-                            sms
-                        </span>
-                        <p>
-                            0 comentarios
-    
-                        </p>
-                       </a> 
-                        
-                    </div>
-    
-    
-    
-                </div>
-    
-               
+                v-if="userStore.user.id === user.id"
+            >
+                <FeedForm 
+                    v-bind:user="user" 
+                    v-bind:posts="posts"
+                />
             </div>
-            <div class="d-flex flex-column mb-3 container-publicacion bg-light">
-                <div class="row ">
-                    <div class=" col col-lg-2  ">
-                        <img src="../assets/feed.jpg" class=" ms-3 mt-3 img-thumbnail img-min-perfil" alt="...">
-    
-                    </div>
-                    <div class="col">
-                        <strong><h1 class="md-auto mt-5">Juliana Medina</h1></strong>
-                    </div>
-                    <div class="col">
-                        <p class="mt-5 ms-5">Hace 18 minutos</p>
-                    </div>
-                    
-                </div> 
-                <div class="row">
-                   
-                    <div class="col p-4">
-                        <img src="../assets/img1.png" class="img-fluid rounded" alt="...">
-                    </div>
-                    
-                </div>
-    
-                
-    
-                <div class="row d-flex justify-start ms-3 mb-4">
-                    <div class="col-3">
-                        <a href="#">
-                            <span class="material-icons-outlined">
-                            thumb_up
-                        </span>
-                        <p>
-                            82 Likes
-    
-                        </p>
-                        </a>
-                        
-                        
-                    </div>
-    
-                    <div class="col-3 ">
-                       <a href="#">
-                        <span class="material-icons-outlined">
-                            sms
-                        </span>
-                        <p>
-                            0 comentarios
-    
-                        </p>
-                       </a> 
-                        
-                    </div>
-    
-    
-    
-                </div>
-    
-               
+
+            <div 
+                class="p-4"
+                v-for="post in posts"
+                v-bind:key="post.id"
+            >
+                <FeedItem v-bind:post="post" v-on:deletePost="deletePost"/>
             </div>
-       
-    
         </div>
-        
-    
-    
-        <div class="col  mt-5">
-            <PersonasQueQuizasConozcas />
+
+        <div class="main-right col-span-1 space-y-4">
+            <PersonasQueQuizaConozcas />
+
             <TrendsContainer />
-    
-        </div>    
-            
+        </div>
     </div>
-    
-    </template>
-    
-    <script>
-    import axios from 'axios';
-    import PersonasQueQuizasConozcas from '../components/PersonasQueQuizaConozcas.vue';
-    import TrendsContainer from '../components/TrendsContainer.vue';
-    import PerfilContainer from '@/components/PerfilContainer.vue';
-    export default{
-      name:'Feed',
-    
-      components:{
-        PersonasQueQuizasConozcas,
-        TrendsContainer,
-        PerfilContainer
-        
-      },
-    
-      data() {
-        return{
-            posts:[],
-            body:'',
+</template>
+
+<style>
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+import axios from 'axios'
+import PersonasQueQuizaConozcas from '../components/PersonasQueQuizaConozcas.vue'
+import TrendsContainer from '../components/TrendsContainer.vue'
+import FeedItem from '../components/FeedItem.vue'
+import FeedForm from '../components/FeedForm.vue'
+import { useUserStore } from '@/store/user'
+import { useToastStore } from '@/store/toast'
+
+export default {
+    name: 'FeedView',
+
+    setup() {
+        const userStore = useUserStore()
+        const toastStore = useToastStore()
+
+        return {
+            userStore,
+            toastStore
         }
-      },
-      mounted(){
+    },
+
+    components: {
+        PersonasQueQuizaConozcas,
+        TrendsContainer,
+        FeedItem,
+        FeedForm
+    },
+
+    data() {
+        return {
+            posts: [],
+            user: {
+                id: ''
+            },
+            can_send_friendship_request: null,
+        }
+    },
+
+    mounted() {
         this.getFeed()
-      },
-      methods:{
-        getFeed(){
+    },
+
+    watch: { 
+        '$route.params.id': {
+            handler: function() {
+                this.getFeed()
+            },
+            deep: true,
+            immediate: true
+        }
+    },
+
+    methods: {
+        deletePost(id) {
+            this.posts = this.posts.filter(post => post.id !== id)
+        },
+
+        sendDirectMessage() {
+            console.log('sendDirectMessage')
+
             axios
-                .get('/api/posts/')
-                .then(response =>{
-                    console.log('data', response.data)
-                    this.posts = response.data
+                .get(`/api/chat/${this.$route.params.id}/get-or-create/`)
+                .then(response => {
+                    console.log(response.data)
+
+                    this.$router.push('/chat')
                 })
-                .catch(error=>{
+                .catch(error => {
                     console.log('error', error)
                 })
         },
-        submitForm(){
-            console.log('submitForm', this.body)
+
+        sendFriendshipRequest() {
             axios
-            .post('/api/posts/create/',{
-                'body': this.body
-            })
-            .then (response=>{
-    
-                console.log('data',response.data)
-    
-                this.posts.unshift(response.data)
-                this.body =''
-            })
-            .catch(error=>{
-                console.log('error',error)
-            })
+                .post(`/api/friends/${this.$route.params.id}/request/`)
+                .then(response => {
+                    console.log('data', response.data)
+
+                    this.can_send_friendship_request = false
+
+                    if (response.data.message == 'request already sent') {
+                        this.toastStore.showToast(5000, 'The request has already been sent!', 'bg-red-300')
+                    } else {
+                        this.toastStore.showToast(5000, 'The request was sent!', 'bg-emerald-300')
+                    }
+                })
+                .catch(error => {
+                    console.log('error', error)
+                })
+        },
+
+        getFeed() {
+            axios
+                .get(`/api/posts/profile/${this.$route.params.id}/`)
+                .then(response => {
+                    console.log('data', response.data)
+
+                    this.posts = response.data.posts
+                    this.user = response.data.user
+                    this.can_send_friendship_request = response.data.can_send_friendship_request
+                })
+                .catch(error => {
+                    console.log('error', error)
+                })
+        },
+
+        logout() {
+            console.log('Log out')
+
+            this.userStore.removeToken()
+
+            this.$router.push('/login')
         }
-      }
     }
-    
-    </script>
-    
-    
-    
+}
+</script>

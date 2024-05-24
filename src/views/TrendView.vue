@@ -1,17 +1,18 @@
-
 <template>
-    <div class="ms-4 mt-4 grid grid-cols-4 gap-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-4 gap-4">
         <div class="main-center col-span-3 space-y-4">
-            <div class="">
-                <FeedForm  v-bind:user="null"   v-bind:posts="posts"/>
-            </div>
-
             <div 
-                class="p-4 bg-white border border-gray-200 rounded-lg   "
+                class="p-4 bg-white border border-gray-200 rounded-lg"
+            >
+                <h2 class="text-xl">Trend: #{{ $route.params.id }}</h2>
+            </div>
+            
+            <div 
+                class="p-4 bg-white border border-gray-200 rounded-lg"
                 v-for="post in posts"
                 v-bind:key="post.id"
             >
-                <FeedItem v-bind:post="post" v-on:deletePost="deletePost" />
+                <FeedItem v-bind:post="post" />
             </div>
         </div>
 
@@ -21,29 +22,26 @@
             <TrendsContainer />
         </div>
     </div>
-</template>    
+</template>
 
 <script>
 import axios from 'axios'
-import FeedItem from '../components/FeedItem.vue'
-import FeedForm from '../components/FeedForm.vue'
 import PersonasQueQuizaConozcas from '../components/PersonasQueQuizaConozcas.vue'
-import TrendsContainer from '@/components/TrendsContainer.vue'
+import FeedItem from '../components/FeedItem.vue'
+import TrendsContainer from '@/components/TrendsContainer.vue';
 
 export default {
-    name: 'Feed',
+    name: 'TrendView',
 
     components: {
         PersonasQueQuizaConozcas,
         TrendsContainer,
-        FeedItem,
-        FeedForm
+        FeedItem
     },
 
     data() {
         return {
             posts: [],
-            body: '',
         }
     },
 
@@ -51,10 +49,20 @@ export default {
         this.getFeed()
     },
 
+    watch: { 
+        '$route.params.id': {
+            handler: function() {
+                this.getFeed()
+            },
+            deep: true,
+            immediate: true
+        }
+    },
+
     methods: {
         getFeed() {
             axios
-                .get('/api/posts/')
+                .get(`/api/posts/?trend=${this.$route.params.id}`)
                 .then(response => {
                     console.log('data', response.data)
 
@@ -63,10 +71,6 @@ export default {
                 .catch(error => {
                     console.log('error', error)
                 })
-        },
-
-        deletePost(id) {
-            this.posts = this.posts.filter(post => post.id !== id)
         },
     }
 }

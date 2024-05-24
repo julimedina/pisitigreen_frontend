@@ -1,5 +1,5 @@
 <template>
-<div class="text-center mt-5">
+<div class="text-center mt-5 container">
   <div class="row container-inicio-sesion ">
     <div class="col form-registro mb-5 ms-3 me-3">
 
@@ -75,7 +75,7 @@
 <div class="row">
 
 <div class="col  d-flex justify-center ">
-  <button  class="btn btn-primary">Registrarse</button>
+  <button  class="btn btn-success">Registrarse</button>
 
 </div>
 
@@ -119,7 +119,7 @@
             </div>
               <div>
                 
-                <router-link :to ="{'name': 'Login'}" class="btn btn-primary">Inicia Sesión</router-link>
+                <router-link :to ="{'name': 'Login'}" class="btn btn-success">Inicia Sesión</router-link>
               
               </div>
           
