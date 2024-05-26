@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 import { RouterLink } from 'vue-router'
 import { useUserStore } from '@/store/user'
 import { useToastStore } from '@/store/toast'
@@ -114,7 +114,7 @@ export default {
 
     methods: {
         likePost(id) {
-            axios
+            this.$http
                 .post(`/api/posts/${id}/like/`)
                 .then(response => {
                     if (response.data.message == "like created") {
@@ -127,7 +127,7 @@ export default {
         },
 
         reportPost() {
-            axios
+            this.$http
                 .post(`/api/posts/${this.post.id}/report/`)
                 .then(response => {
                     console.log(response.data)
@@ -142,7 +142,7 @@ export default {
         deletePost() {
             this.$emit('deletePost', this.post.id)
 
-            axios
+            this.$http
                 .delete(`/api/posts/${this.post.id}/delete/`)
                 .then(response => {
                     console.log(response.data)

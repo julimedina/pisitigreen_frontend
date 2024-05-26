@@ -24,7 +24,6 @@
 </template>    
 
 <script>
-import axios from 'axios'
 import FeedItem from '../components/FeedItem.vue'
 import FeedForm from '../components/FeedForm.vue'
 import PersonasQueQuizaConozcas from '../components/PersonasQueQuizaConozcas.vue'
@@ -53,7 +52,7 @@ export default {
 
     methods: {
         getFeed() {
-            axios
+            this.$http
                 .get('/api/posts/')
                 .then(response => {
                     console.log('data', response.data)

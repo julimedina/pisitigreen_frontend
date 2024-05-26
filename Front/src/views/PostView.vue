@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 import FeedItem from '../components/FeedItem.vue'
 import CommentItem from '../components/CommentItem.vue'
 import PersonasQueQuizaConozcas from '@/components/PersonasQueQuizaConozcas.vue'
@@ -74,7 +74,7 @@ export default {
 
     methods: {
         getPost() {
-            axios
+            this.$http
                 .get(`/api/posts/${this.$route.params.id}/`)
                 .then(response => {
                     console.log('data', response.data)
@@ -89,7 +89,7 @@ export default {
         submitForm() {
             console.log('submitForm', this.body)
 
-            axios
+           this.$http
                 .post(`/api/posts/${this.$route.params.id}/comment/`, {
                     'body': this.body
                 })

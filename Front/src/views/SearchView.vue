@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+
 import PersonasQueQuizaConozcas from '@/components/PersonasQueQuizaConozcas.vue';
 import TrendsContainer from '../components/TrendsContainer.vue';
 import FeedItem from '@/components/FeedItem.vue';
@@ -109,7 +109,7 @@ export default{
         submitForm() {
             console.log('submitForm', this.query)
 
-            axios
+            this.$http
                 .post('/api/search/', {
                     query: this.query
                 })

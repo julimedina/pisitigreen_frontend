@@ -40,7 +40,7 @@
 
 
 <script>
-import axios from 'axios'
+
 
 export default {
   
@@ -57,7 +57,7 @@ export default {
 
     methods: {
         getFriendSuggestions() {
-            axios
+            this.$http
                 .get('/api/friends/suggested/')
                 .then(response => {
                     console.log(response.data)

@@ -120,7 +120,7 @@ export default {
 
     methods: {
         getFriends() {
-            axios
+            this.$http
                 .get(`/api/friends/${this.$route.params.id}/`)
                 .then(response => {
                     console.log('data', response.data)
@@ -137,7 +137,7 @@ export default {
         handleRequest(status, pk) {
             console.log('handleRequest', status)
 
-            axios
+            this.$http
                 .post(`/api/friends/${pk}/${status}/`)
                 .then(response => {
                     console.log('data', response.data)

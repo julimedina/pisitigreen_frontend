@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 
 export default {
     name: 'TrendsContainer',
@@ -58,7 +58,7 @@ export default {
 
     methods: {
         getTrends() {
-            axios
+            this.$http
                 .get('/api/posts/trends/')
                 .then(response => {
                     console.log(response.data)

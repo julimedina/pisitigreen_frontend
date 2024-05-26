@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 
 export default {
     props: {
@@ -64,7 +64,7 @@ export default {
             formData.append('body', this.body)
             formData.append('is_private', this.is_private)
 
-            axios
+            this.$http
                 .post('/api/posts/create/', formData, {
                     headers: {
                         "Content-Type": "multipart/form-data",

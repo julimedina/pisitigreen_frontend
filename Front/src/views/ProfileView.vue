@@ -89,7 +89,8 @@ input[type="file"] {
 </style>
 
 <script>
-import axios from 'axios'
+
+
 import PersonasQueQuizaConozcas from '../components/PersonasQueQuizaConozcas.vue'
 import TrendsContainer from '../components/TrendsContainer.vue'
 import FeedItem from '../components/FeedItem.vue'
@@ -98,7 +99,7 @@ import { useUserStore } from '@/store/user'
 import { useToastStore } from '@/store/toast'
 
 export default {
-    name: 'ProfileView',
+    name: 'FeedView',
 
     setup() {
         const userStore = useUserStore()
@@ -146,23 +147,10 @@ export default {
             this.posts = this.posts.filter(post => post.id !== id)
         },
 
-        sendDirectMessage() {
-            console.log('sendDirectMessage')
-
-            axios
-                .get(`/api/chat/${this.$route.params.id}/get-or-create/`)
-                .then(response => {
-                    console.log(response.data)
-
-                    this.$router.push('/chat')
-                })
-                .catch(error => {
-                    console.log('error', error)
-                })
-        },
+       
 
         sendFriendshipRequest() {
-            axios
+            this.$http
                 .post(`/api/friends/${this.$route.params.id}/request/`)
                 .then(response => {
                     console.log('data', response.data)
@@ -181,7 +169,7 @@ export default {
         },
 
         getFeed() {
-            axios
+            this.$http
                 .get(`/api/posts/profile/${this.$route.params.id}/`)
                 .then(response => {
                     console.log('data', response.data)

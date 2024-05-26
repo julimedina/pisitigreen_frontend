@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 
 export default {
     name: 'NotificationsView',
@@ -41,7 +41,7 @@ export default {
 
     methods: {
         getNotifications() {
-            axios
+            this.$http
                 .get('/api/notifications/')
                 .then(response => {
                     console.log(response.data)
@@ -56,7 +56,7 @@ export default {
         async readNotification(notification) {
             console.log('readNotification', notification.id)
 
-            await axios
+            await  this.$http
                 .post(`/api/notifications/read/${notification.id}/`)
                 .then(response => {
                     console.log(response.data)

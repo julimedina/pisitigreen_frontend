@@ -52,7 +52,7 @@
 <div class="row">
   <div class="col-sm d-flex justify-center form-group">
     
-    <input v-model="form.password2" type="password" class="form-control  bg-stone-300" style="width: 60%;" name="repetirContrasena" placeholder="Repite la contraseña" >
+    <input v-model="form.password2" type="password" class="form-control  bg-stone-300" style="width: 60%;" autocomplete="off" name="repetirContrasena" placeholder="Repite la contraseña" >
   </div>
 
   <template v-if="errors.length > 0">
@@ -184,7 +184,7 @@ h1{
 
 <script>
 
-import axios from 'axios'
+
 import { useToastStore } from '@/store/toast';
 export default{
   name:'SignUp',
@@ -224,7 +224,8 @@ export default{
         this.errors.push('La contraseña no es igual')
       }
       if (this.errors.length == 0){
-        axios
+        this.$http
+        
           .post('/api/signup/' , this.form)
           .then (response =>{
             if  (response.data.message === 'success'){
