@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 import { useUserStore } from '@/store/user'
 import PersonasQueQuizaConozcas from '../components/PersonasQueQuizaConozcas.vue'
 import TrendsContainer from '@/components/TrendsContainer.vue'
