@@ -20,13 +20,7 @@
                         Enviar Solicitud de Amistad
                     </button>
 
-                    <button 
-                        class="inline-block mt-4 py-4 px-3 btn btn-success" 
-                        @click="sendDirectMessage"
-                        v-if="userStore.user.id !== user.id"
-                    >
-                        Enviar mensaje
-                    </button>
+                   
 
                     <RouterLink 
                         class="inline-block mr-2 py-4 px-3 btn btn-success" 
@@ -99,7 +93,7 @@ import { useUserStore } from '@/store/user'
 import { useToastStore } from '@/store/toast'
 
 export default {
-    name: 'FeedView',
+    name: 'ProfileView',
 
     setup() {
         const userStore = useUserStore()
