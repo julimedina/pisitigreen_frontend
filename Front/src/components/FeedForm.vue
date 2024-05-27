@@ -14,12 +14,12 @@
         </div>
 
         <div class="p-4 border-t border-gray-100 flex justify-between">
-            <label class="inline-block py-4 px-6 bg-gray-600 text-white rounded-lg">
+            <label class="inline-block py-4 px-6 bg-green-700 text-white rounded-lg">
                 <input type="file" ref="file" @change="onFileChange">
-                Attach image
+                Imagen
             </label>
 
-            <button class="inline-block py-4 px-6 bg-purple-600 text-white rounded-lg">Post</button>
+            <button class="inline-block py-4 px-6 bg-teal-500 text-white rounded-lg">Post</button>
         </div>
     </form>
 </template>

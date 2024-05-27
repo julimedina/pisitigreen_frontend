@@ -1,73 +1,46 @@
 <template>
-    <div>
-    <div class=" row-sm d-flex flex-column mb-3 container-publicacion bg-light">
+    <div class="container-publicacion bg-light mb-3">
         <div class="text-center mt-5">
-            <strong>
-                <h1>
-                Personas que quizás conoces
-            </h1>
-            </strong>
-            
-
+            <h1><strong>Personas que quizás conoces</strong></h1>
         </div>
-    
-        <div class="row" v-for="user in users"
-                v-bind:key="user.id">
-            <div class="col"  >
-                <img :src="user.get_avatar"  class=" ms-3 mt-3  rounded-full">
 
+        <div class="row" v-for="user in users" :key="user.id">
+            <div class="col">
+                <img :src="user.get_avatar" class="ms-3 mt-3 rounded-full">
             </div>
             <div class="col mt-5">
                 <strong>{{ user.name }}</strong>
-
             </div>
-
             <div class="col mt-5 mb-5 me-3">
-                
-                <RouterLink :to="{name: 'profile', params: {id: user.id}}"class="btn btn-outline-success ">Mostrar</RouterLink>
-
+                <RouterLink :to="{ name: 'ProfileView', params: { id: user.id } }" class="btn btn-outline-success">Mostrar</RouterLink>
             </div>
-
-        </div> 
-</div>
-</div>
-
-
-
-
+        </div>
+    </div>
 </template>
 
-
-
 <script>
-
+import axios from 'axios';
 
 export default {
-  
-   
+    name: 'PersonasQueQuizaConozcas',
     data() {
         return {
             users: []
-        }
+        };
     },
-
     mounted() {
-        this.getFriendSuggestions()
+        this.getFriendSuggestions();
     },
-
     methods: {
-        getFriendSuggestions() {
-            this.$http
-                .get('/api/friends/suggested/')
-                .then(response => {
-                    console.log(response.data)
-
-                    this.users = response.data
-                })
-                .catch(error => {
-                    console.log('error', error)
-                })
+        async getFriendSuggestions() {
+            try {
+                const response = await axios.get('/api/friends/suggested/');
+                console.log(response.data);
+                this.users = response.data;
+            } catch (error) {
+                console.error('Error fetching friend suggestions:', error);
+            }
         }
     }
-}
+};
 </script>

@@ -38,8 +38,8 @@
                     </template>
 
                     <template v-else>
-                        <RouterLink to="/Login" class="mr-4 py-4 px-6 btn btn-success">Iniciar Sesión</RouterLink>
-                        <RouterLink to="/SignUp" class="py-4 px-6 btn btn-primary">Registrarse</RouterLink>
+                        <RouterLink to="/Login" class="mr-4 py-4 px-6  bg-green-700 text-white rounded-lg">Iniciar Sesión</RouterLink>
+                        <RouterLink to="/SignUp" class="py-4 px-6  bg-teal-500 text-white rounded-lg ">Registrarse</RouterLink>
                     </template>
                 </div>
             </div>

@@ -12,18 +12,12 @@
                 </div>
 
                 <div class="mt-6">
-                    <button 
-                        class="inline-block py-4 px-3 btn btn-success   " 
-                        @click="sendFriendshipRequest"
-                        v-if="userStore.user.id !== user.id && can_send_friendship_request"
-                    >
-                        Enviar Solicitud de Amistad
-                    </button>
+                    
 
                    
 
                     <RouterLink 
-                        class="inline-block mr-2 py-4 px-3 btn btn-success" 
+                        class="inline-block mr-2 py-4 px-3 bg-green-700 text-white rounded-lg" 
                         to="/Profile/edit"
                         v-if="userStore.user.id === user.id"
                     >
@@ -31,7 +25,7 @@
                     </RouterLink>
 
                     <button 
-                        class="inline-block py-4 px-3 bg-red-600 text-xs text-white rounded-lg" 
+                        class="inline-block py-4 px-3   bg-teal-500 text-white rounded-lg text-xs" 
                         @click="logout"
                         v-if="userStore.user.id === user.id"
                     >
@@ -41,7 +35,7 @@
             </div>
         </div>
 
-        <div class="main-center col-span-2 space-y-4">
+        <div class="main-center col-span-2 ">
             <div 
                 
                 v-if="userStore.user.id === user.id"
@@ -61,11 +55,12 @@
             </div>
         </div>
 
-        <div class="main-right col-span-1 space-y-4">
+       <!--<div class="main-right col-span-1 space-y-4">
             <PersonasQueQuizaConozcas />
 
             <TrendsContainer />
         </div>
+        --> 
     </div>
 </template>
 

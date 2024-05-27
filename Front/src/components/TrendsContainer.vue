@@ -1,74 +1,53 @@
 <template>
     <div>
-    <div class=" row-sm d-flex flex-column mb-3 container-publicacion bg-light"  v-for="trend in trends"
-                v-bind:key="trend.id">
+      <div v-if="trends.length" class="row-sm d-flex flex-column mb-3 container-publicacion bg-light">
         <div class="text-center mt-5">
-            <strong>
-                <h1>
-                Trends
-            </h1>
-            </strong>
-            
-
+          <strong>
+            <h1>Trends</h1>
+          </strong>
         </div>
-    
-        <div class="row">
-           
-            <div class="col mt-5 ms-4 mb-0">
-                <strong><p>#{{ trend.hashtag }}</p></strong>
-                
-                    <p >
-                        >{{ trend.occurences }}  Posts
-                    </p>
-                 
-
-            </div>
-           
-
-            <div class="col mt-5 mb-5 ms-5">
-                
-                <RouterLink  :to="{name: 'trendview', params: {id: trend.hashtag}}" class="btn btn-outline-primary">Explorar</RouterLink>
-
-            </div>
-
-         
-
-        </div> 
-</div>
-</div>
-
-
-</template>
-
-<script>
-
-
-export default {
+        <div class="row" v-for="trend in trends" :key="trend.id">
+          <div class="col mt-5 ms-4 mb-0">
+            <strong><p>#{{ trend.hashtag }}</p></strong>
+            <p>{{ trend.occurences }} Posts</p>
+          </div>
+          <div class="col mt-5 mb-5 ms-5">
+            <RouterLink :to="{ name: 'TrendView', params: { id: trend.hashtag } }" class="btn btn-outline-primary">
+              Explorar
+            </RouterLink>
+          </div>
+        </div>
+      </div>
+      <div v-else class="text-center mt-5">
+        <p>No trends available</p>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  export default {
     name: 'TrendsContainer',
-
+  
     data() {
-        return {
-            trends: []
-        }
+      return {
+        trends: []
+      };
     },
-
+  
     mounted() {
-        this.getTrends()
+      this.getTrends();
     },
-
+  
     methods: {
-        getTrends() {
-            this.$http
-                .get('/api/posts/trends/')
-                .then(response => {
-                    console.log(response.data)
-
-                    this.trends = response.data
-                })
-                .catch(error => {
-                    console.log('Error: ', error)
-                })
+      async getTrends() {
+        try {
+          const response = await this.$http.get('/api/posts/trends/');
+          console.log(response.data);
+          this.trends = response.data;
+        } catch (error) {
+          console.error('Error:', error);
         }
+      }
     }
-}
-</script>
+  };
+  </script>
