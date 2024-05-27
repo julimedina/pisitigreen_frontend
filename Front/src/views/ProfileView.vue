@@ -7,7 +7,7 @@
                 <p><strong>{{ user.name }}</strong></p>
 
                 <div class="mt-6 flex space-x-8 justify-around" v-if="user.id">
-                    <RouterLink :to="{name: 'friends', params: {id: user.id}}" class="text-xs text-gray-500">{{ user.friends_count }} Amigos</RouterLink>
+                    <RouterLink :to="{name: 'FriendsView', params: {id: user.id}}" class="text-xs text-gray-500">{{ user.friends_count }} Amigos</RouterLink>
                     <p >{{ user.posts_count }} posts</p>
                 </div>
 
@@ -24,7 +24,7 @@
 
                     <RouterLink 
                         class="inline-block mr-2 py-4 px-3 btn btn-success" 
-                        to="/profile/edit"
+                        to="/Profile/edit"
                         v-if="userStore.user.id === user.id"
                     >
                         Editar perfil
@@ -94,6 +94,7 @@ import { useToastStore } from '@/store/toast'
 
 export default {
     name: 'ProfileView',
+    props: ['id'],
 
     setup() {
         const userStore = useUserStore()
@@ -116,7 +117,7 @@ export default {
         return {
             posts: [],
             user: {
-                id: ''
+                
             },
             can_send_friendship_request: null,
         }

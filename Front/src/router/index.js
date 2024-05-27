@@ -11,10 +11,7 @@ import EditProfileView from '../views/EditProfileView.vue';
 import NotificationsView from '../views/NotificationsView.vue';
 
 const routes = [
-  {
-    path: '/',
-    redirect: '/Feed'
-  },
+
   {
     path: '/Feed',
     name: 'FeedView',
@@ -36,7 +33,7 @@ const routes = [
     component: LoginView
   },
   {
-    path: '/Profile/:id',
+    path: '/ProfileView/:id',
     name: 'ProfileView',
     component: ProfileView,
     props: true

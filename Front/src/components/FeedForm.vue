@@ -1,48 +1,36 @@
+
 <template>
-  <div class=" row-sm d-flex flex-column mb-3  bg-light ">
-                <form  v-on:submit.prevent="submitForm" method="post">
-                <div class="p-2 mt-5 d-flex justify-center">
-                    <textarea v-model="body" class="form-control  ms-4 me-4"  placeholder="Qué estás pensando?" aria-label="With textarea" ></textarea>
-                </div>
-                <div class="row">  
-            <div class="col ms-4">
-                <label>
-                <input type="checkbox" v-model="is_private"> Privado
+    <form v-on:submit.prevent="submitForm" method="post">
+        <div class="p-4">  
+            <textarea v-model="body" class="p-4 w-full bg-gray-100 rounded-lg" placeholder="What are you thinking about?"></textarea>
+
+            <label>
+                <input type="checkbox" v-model="is_private"> Private
             </label>
-            </div>
-            
-            
 
             <div id="preview" v-if="url">
                 <img :src="url" class="w-[100px] mt-3 rounded-xl" />
             </div>
         </div>
 
-            
-                <div class="row p-2">
-                    <div class="p-4  flex justify-content-around">
-            <label class="inline-block py-4 px-6 btn btn-success">
+        <div class="p-4 border-t border-gray-100 flex justify-between">
+            <label class="inline-block py-4 px-6 bg-gray-600 text-white rounded-lg">
                 <input type="file" ref="file" @change="onFileChange">
-                Adjuntar imagen
+                Attach image
             </label>
 
-            <button type="button"class="btn btn-primary">Post</button>
+            <button class="inline-block py-4 px-6 bg-purple-600 text-white rounded-lg">Post</button>
         </div>
-                   
-                  
-                </div> 
-            </form> 
-</div>
-
-
-
+    </form>
 </template>
 
 <script>
 
 
 export default {
+    name:'FeedForm',
     props: {
+        
         user: Object,
         posts: Array
     },
