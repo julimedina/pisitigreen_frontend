@@ -11,24 +11,24 @@
         <p>No posts available for this trend.</p>
       </div>
     </div>
-    <div class="main-right col-span-1 space-y-4">
+   <!-- <div class="main-right col-span-1 space-y-4">
       <PersonasQueQuizaConozcas />
       <TrendsContainer />
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script>
-import PersonasQueQuizaConozcas from '../components/PersonasQueQuizaConozcas.vue';
+//import PersonasQueQuizaConozcas from '../components/PersonasQueQuizaConozcas.vue';
 import FeedItem from '../components/FeedItem.vue';
-import TrendsContainer from '@/components/TrendsContainer.vue';
+//import TrendsContainer from '@/components/TrendsContainer.vue';
 import axios from 'axios';
 
 export default {
   name: 'TrendView',
   components: {
-    PersonasQueQuizaConozcas,
-    TrendsContainer,
+   // PersonasQueQuizaConozcas,
+    //TrendsContainer,
     FeedItem,
   },
   data() {

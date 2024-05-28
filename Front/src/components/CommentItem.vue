@@ -5,7 +5,7 @@
             
             <p>
                 <strong>
-                    <RouterLink :to="{name: 'profile', params:{'id': comment.created_by.id}}">{{ comment.created_by.name }}</RouterLink>
+                    <RouterLink :to="{name: 'ProfileView', params:{id: comment.created_by.id}}">{{ comment.created_by.name }}</RouterLink>
                 </strong>
             </p>
         </div>

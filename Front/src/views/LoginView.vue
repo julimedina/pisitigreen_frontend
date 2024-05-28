@@ -1,4 +1,3 @@
-
 <template>
     <div class="text-center mt-5 container">
       <div class="row container-inicio-sesion ">
@@ -130,7 +129,7 @@
       </div>
     </div>
 </template>
-    
+
 <style scoped>
     h1{
       font-size: 25px;
@@ -174,70 +173,74 @@
       border: none;
       border-radius: 5px;
     }
-    </style>
-    <script>
-import axios from 'axios'
+</style>
 
+<script>
+
+import axios from 'axios'
 import { useUserStore } from '@/store/user'
 
 export default {
-    setup() {
-        const userStore = useUserStore()
-
-        return {
-            userStore
-        }
-    },
-
-    data() {
-        return {
-            form: {
-                email: '',
-                password: '',
-            },
-            errors: []
-        }
-    },
-    methods: {
-        async submitForm() {
-            this.errors = []
-
-            if (this.form.email === '') {
-                this.errors.push('Your e-mail is missing')
-            }
-
-            if (this.form.password === '') {
-                this.errors.push('Your password is missing')
-            }
-
-            if (this.errors.length === 0) {
-                await axios
-                    .post('/api/login/', this.form)
-                    .then(response => {
-                        this.userStore.setToken(response.data)
-
-                        axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.access;
-                    })
-                    .catch(error => {
-                        console.log('error', error)
-
-                        this.errors.push('The email or password is incorrect! Or the user is not activated!')
-                    })
-            }
-            
-            if (this.errors.length === 0) {
-                await axios
-                    .get('/api/me/')
-                    .then(response => {
-                        this.userStore.setUserInfo(response.data)
-
-                        this.$router.push('/feed')
-                    })
-                    .catch(error => {
-                        console.log('error', error)
-                    })
-            }
-        }
-    }
+  // Configuración de la vista
+  setup() { //Función de configuración del componente en el Composition API de Vue 3
+        
+      const userStore = useUserStore()// Uso del store de usuario
+      return {
+          userStore // Retorna el estado local de la vista
+      }
+  },
+  // Datos locales
+  data() {
+      return { //Retorna los datos locales iniciales de la vista
+          form: {
+              email: '', 
+              password: '',
+          },
+          errors: []
+      }
+  },
+  // Métodos para el formulario de inicio de sesión
+  methods: {
+      async submitForm() {
+          // Reiniciar lista de errores
+          this.errors = []
+          // Validar campos de entrada
+          if (this.form.email === '') {
+              this.errors.push('Your e-mail is missing')
+          }
+          if (this.form.password === '') {
+              this.errors.push('Your password is missing')
+          }
+          // Si no hay errores, enviar solicitud de inicio de sesión
+          if (this.errors.length === 0) {
+              await axios
+                  .post('/api/login/', this.form)
+                  .then(response => {
+                      // Almacenar token en el store de usuario
+                      this.userStore.setToken(response.data)
+                      axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.access;
+                  })
+                  .catch(error => {
+                      console.log('error', error)
+                      // Mostrar mensaje de error si la solicitud falla
+                      this.errors.push('The email or password is incorrect! Or the user is not activated!')
+                  })
+          }
+          // Si no hay errores, obtener información del usuario
+          if (this.errors.length === 0) {
+              await axios
+                  .get('/api/me/')
+                  .then(response => {
+                      // Almacenar información del usuario en el store de usuario
+                      this.userStore.setUserInfo(response.data)
+                      // Redirigir a la página de inicio
+                      this.$router.push('/feed')
+                  })
+                  .catch(error => {
+                      console.log('error', error)
+                  })
+          }
+      }
+  }
 }
 </script>

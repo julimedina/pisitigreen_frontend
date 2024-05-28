@@ -30,6 +30,8 @@
                         <input type="file" ref="file">
                     </div>
 
+                   
+
                     <template v-if="errors.length > 0"> <!--condicional que muestra los errores si existen-->
                         <div class="bg-red-300 p-6">
                             <p v-for="error in errors" v-bind:key="error">{{ error }}</p><!--bucle que itera sobre los errores y los muestra-->

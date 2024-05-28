@@ -8,10 +8,9 @@
 
             <div 
                 class="p-4 bg-white border border-gray-200 rounded-lg   "
-                v-for="post in posts"
-                v-bind:key="post.id"
-            >
-                <FeedItem v-bind:post="post" v-on:deletePost="deletePost" />
+                v-for="post in posts" 
+                v-bind:key="post.id"> <!--Se llama el arreglo de posts por medio de su id-->
+                <FeedItem v-bind:post="post" v-on:deletePost="deletePost" /><!--Se llama el componente FeedItem que permite mostrar  el body de cada post-->
             </div>
         </div>
 
@@ -27,15 +26,15 @@
 <script>
 import FeedItem from '../components/FeedItem.vue'
 import FeedForm from '../components/FeedForm.vue'
-import PersonasQueQuizaConozcas from '../components/PersonasQueQuizaConozcas.vue'
-import TrendsContainer from '@/components/TrendsContainer.vue'
+//import PersonasQueQuizaConozcas from '../components/PersonasQueQuizaConozcas.vue'
+//import TrendsContainer from '@/components/TrendsContainer.vue'
 
 export default {
     name: 'FeedView',
 
     components: {
-        PersonasQueQuizaConozcas,
-        TrendsContainer,
+        //PersonasQueQuizaConozcas,
+        //TrendsContainer,
         FeedItem,
         FeedForm
     },
