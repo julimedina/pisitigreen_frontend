@@ -137,8 +137,10 @@ pistigreen_frontend/
 
 
 ## Enlace del video explicativo
-https://youtu.be/TYdzIIdHnx4
-https://youtu.be/-U9rAecn2WY
-https://youtu.be/oyOOyNFQ22w
+<a href="https://youtu.be/TYdzIIdHnx4">Parte 1</a> 
+<a href=" https://youtu.be/-U9rAecn2WY">Parte 2</a>
+<a href="https://youtu.be/TYdzIIdHnx4">Parte 3</a> 
+
+
 ## Enlace del despliegue
-https://front-tau-nine.vercel.app/ 
+<a href="https://front-tau-nine.vercel.app/ ">Despliegue</a>

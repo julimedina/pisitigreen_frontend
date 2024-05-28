@@ -118,6 +118,7 @@ export default {
                                 email: this.form.email,
                                 avatar: response.data.user.get_avatar
                             })
+                        
 
                             this.$router.back() //navega de regreso a la página anterior en la aplicación
                         } else {
