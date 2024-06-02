@@ -8,7 +8,7 @@ import axios from 'axios';
 import './assets/main.css'
 import 'material-icons/iconfont/material-icons.css'
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000/'
+axios.defaults.baseURL = process.env.VUE_APP_API_URL
 
 const app = createApp(App);
 
