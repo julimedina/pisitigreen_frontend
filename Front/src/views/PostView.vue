@@ -32,12 +32,12 @@
         </div>
 
       
-        <div class="main-right col-span-1 space-y-4">
-            <!-- Componente PersonasQueQuizaConozcas -->
+         <!--  <div class="main-right col-span-1 space-y-4">
+         
             <PersonasQueQuizaConozcas />
-            <!-- Componente TrendsContainer -->
-            <TrendsContainer />
-        </div>
+             <TrendsContainer />
+           
+        </div> -->
     </div>
 </template>
 

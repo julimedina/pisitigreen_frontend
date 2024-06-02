@@ -3,11 +3,11 @@
     <form v-on:submit.prevent="submitForm" method="post"> <!-- Se captura el evento de submit y previene el comportamiento por defecto -->
         <div class="p-4">
             <!-- Se enlaza  la propiedad 'body' del componente -->
-            <textarea v-model="body" class="p-4 w-full bg-gray-100 rounded-lg" placeholder="What are you thinking about?"></textarea>
+            <textarea v-model="body" class="p-4 w-full bg-gray-100 rounded-lg" placeholder="Que estás pensando?"></textarea>
 
             <!-- Se enlaza la propiedad 'is_private' del componente -->
             <label>
-                <input type="checkbox" v-model="is_private"> Private
+                <input type="checkbox" v-model="is_private"> Privado
             </label>
 
             <!-- Vista previa de la imagen, si 'url' tiene valor -->

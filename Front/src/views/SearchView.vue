@@ -8,13 +8,13 @@
                 <!-- Formulario de búsqueda -->
                 <form v-on:submit.prevent="submitForm" class="p-4 flex space-x-4">  
                     <!-- Input de búsqueda -->
-                    <input v-model="query" type="search" class="p-4 w-full bg-gray-100 rounded-lg" placeholder="What are you looking for?">
+                    <input v-model="query" type="search" class="p-4 w-full bg-gray-100 rounded-lg" placeholder="Qué estás buscando?">
                     <!-- Botón de búsqueda -->
                     <button class="inline-block py-4 px-6 bg-green-700 text-white rounded-lg">
                         <!-- Ícono de búsqueda -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
-                        </svg>
+                        <span class="material-icons">
+                            search
+                        </span>
                     </button>
                 </form>
             </div>
@@ -25,11 +25,11 @@
                     <!-- Avatar del usuario -->
                     <img :src="user.get_avatar" class="mb-6 rounded-full">
                     <!-- Nombre del usuario -->
-                    <p><strong><RouterLink :to="{name: 'ProfileView', params:{id: user.id}}">{{ user.name }}</RouterLink></strong></p>
+                    <p><strong><RouterLink :to="{name: 'ProfileView', params:{'id': user.id}}">{{ user.name }}</RouterLink></strong></p>
                     <!-- Contadores de amigos y posts -->
                     <div class="mt-6 flex space-x-8 justify-around">
-                        <p class="text-xs text-gray-500">{{ user.friends_count }} friends</p>
-                        <p class="text-xs text-gray-500">{{ user.posts_count }} posts</p>
+                        <p class="text-xs text-gray-500">{{ user.friends_count }} Amigos</p>
+                        <p class="text-xs text-gray-500">{{ user.posts_count }} Posts</p>
                     </div>
                 </div>
             </div>
@@ -49,15 +49,16 @@
 </template>
 
 <script>
-// Importaciones necesarias
-import PersonasQueQuizaConozcas from '../components/PersonasQueQuizaConozcas.vue'
-import TrendsContainer from '../components/TrendsContainer.vue'
+
+//import PersonasQueQuizaConozcas from '../components/PersonasQueQuizaConozcas.vue'
+//import TrendsContainer from '../components/TrendsContainer.vue'
 import FeedItem from '../components/FeedItem.vue'
+import axios from 'axios';
 
 export default {
  
     name: 'SearchView',
-    // Componentes utilizados
+
     components: {
        // PersonasQueQuizaConozcas,
         //TrendsContainer,

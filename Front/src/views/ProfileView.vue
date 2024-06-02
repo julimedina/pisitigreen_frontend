@@ -3,9 +3,9 @@
     <div class="max-w-7xl mx-auto grid grid-cols-4 gap-4">
         
         <div class="main-left col-span-1">
-            <!-- Panel de usuario -->
+
             <div class="p-4 bg-white border border-gray-200 text-center rounded-lg">
-                <!-- Avatar del usuario -->
+               
                 <img :src="user.get_avatar" class="mb-6 rounded-full">
                 <!-- Nombre del usuario -->
                 <p><strong>{{ user.name }}</strong></p>
@@ -20,9 +20,9 @@
                     <RouterLink class="inline-block mr-2 py-4 px-3 bg-green-700 text-white rounded-lg" to="/Profile/edit" v-if="userStore.user.id === user.id">
                         Editar perfil
                     </RouterLink>
-                    <!-- Enviar solicitud de amistad (visible solo si es el usuario actual)  -->
-                    <button class="inline-block py-4 px-3 bg-purple-600 text-xs text-white rounded-lg" @click="sendFriendshipRequest" v-if="userStore.user.id == user.id && can_send_friendship_request">
-                        Send friendship request
+                    <!-- Enviar solicitud de amistad (visible solo si no es el usuario actual)  -->
+                    <button class="inline-block py-4 px-3 bg-purple-600 text-xs text-white rounded-lg" @click="sendFriendshipRequest" v-if="userStore.user.id !== user.id && can_send_friendship_request">
+                       Enviar solicitud
                     </button>
                     <!-- Cerrar sesión (visible solo si es el usuario actual) -->
                     <button class="inline-block py-4 px-3 bg-teal-500 text-white rounded-lg text-xs" @click="logout" v-if="userStore.user.id === user.id">
@@ -136,9 +136,9 @@ export default {
                     this.can_send_friendship_request = false
 
                     if (response.data.message == 'request already sent') {
-                        this.toastStore.showToast(5000, 'The request has already been sent!', 'bg-red-300')
+                        this.toastStore.showToast(5000, 'La solicitud ha sido enviada!', 'bg-red-300')
                     } else {
-                        this.toastStore.showToast(5000, 'The request was sent!', 'bg-emerald-300')
+                        this.toastStore.showToast(5000, 'La solicitud  no fue enviada!', 'bg-emerald-300')
                     }
                 })
                 .catch(error => {

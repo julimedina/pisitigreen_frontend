@@ -48,7 +48,7 @@
                 </svg> 
 
                 <!-- Enlace a la vista del post con los comentarios -->
-                <RouterLink :to="{ name: 'PostView', params: { id: post.id } }" class="text-gray-500 text-xs">{{ post.comments_count }} comments</RouterLink>
+                <RouterLink :to="{ name: 'PostView', params: { id: post.id } }" class="text-gray-500 text-xs">{{ post.comments_count }} comentarios</RouterLink>
             </div>
 
             <!-- Indicador de privacidad del post -->
@@ -86,7 +86,7 @@
                 </svg>
  
                 <!-- Texto que indica la opción de eliminar el post -->
-                <span class="text-red-500 text-xs">Delete post</span>
+                <span class="text-red-500 text-xs">Eliminar post</span>
             </div>
 
             <!-- Botón para reportar el post -->
@@ -99,7 +99,7 @@
                 </svg>
 
                 <!-- Texto que indica la opción de reportar el post -->
-                <span class="text-orange-500 text-xs">Report post</span>
+                <span class="text-orange-500 text-xs">Reportar post</span>
             </div>
         </div>
     </div>

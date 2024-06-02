@@ -8,45 +8,39 @@
               <!-- Tarjeta de registro -->
               <div class="card card-body mt-5 form-registro">
                   <!-- Formulario de registro -->
-                  <form v-on:submit.prevent="submitForm" method="post">
+                  <form v-on:submit.prevent="submitForm" >
                       <!-- Sección de datos de registro -->
                       <div class="row">
                           <!-- Columna de imagen -->
                           <div class="col-sm">
-                              <!-- Imagen de gato -->
                               <div class="d-flex justify-center">
                                   <img src="../assets/cat.png" alt="">
                               </div>
-                              <!-- Título del formulario -->
+                             
                               <strong><h1>Registrarse</h1></strong>
                               <br>
-                              <!-- Campo de nombre -->
                               <div class="form-group d-flex justify-center">
-                                  <input v-model="form.name" type="text" class="form-control bg-stone-300" style="width: 60%;" name="name" autocomplete="name" require placeholder="Nombre">
+                                  <input v-model="form.name" type="text" class="form-control bg-stone-300" style="width: 60%;" autocomplete="name" require placeholder="Nombre">
                               </div>
                           </div>
                       </div>
                       <br>
-                      <!-- Sección de datos de correo electrónico -->
                       <div class="row">
                           <div class="col-sm d-flex justify-center form-group">
-                              <input v-model="form.email" type="email" class="form-control bg-stone-300" style="width: 60%;" autocomplete="email" name="email" require placeholder="Correo Electrónico">
+                              <input v-model="form.email" type="email" class="form-control bg-stone-300" style="width: 60%;" autocomplete="email"  require placeholder="Correo Electrónico">
                           </div>
                       </div>
                       <br>
-                      <!-- Sección de datos de contraseña -->
                       <div class="row">
                           <div class="col-sm d-flex justify-center form-group">
-                              <input v-model="form.password1" type="password" class="form-control bg-stone-300" style="width: 60%;" autocomplete="off" name="password1" require placeholder="Contraseña">
+                              <input v-model="form.password1" type="password" class="form-control bg-stone-300" style="width: 60%;" autocomplete="off"  require placeholder="Contraseña">
                           </div>
                       </div>
                       <br>
-                      <!-- Sección de confirmación de contraseña -->
                       <div class="row">
                           <div class="col-sm d-flex justify-center form-group">
-                              <input v-model="form.password2" type="password" class="form-control bg-stone-300" style="width: 60%;" autocomplete="off" name="password2" placeholder="Repite la contraseña">
+                              <input v-model="form.password2" type="password" class="form-control bg-stone-300" style="width: 60%;" autocomplete="off"  placeholder="Repite la contraseña">
                           </div>
-                          <!-- Mostrar errores de validación -->
                           <template v-if="errors.length > 0">
                               <div class="bg-danger">
                                   <p v-for="error in errors" v-bind:key="error">
@@ -56,7 +50,6 @@
                           </template>
                       </div>
                       <br>
-                      <!-- Botón de registro -->
                       <div class="row">
                           <div class="col d-flex justify-center">
                               <button class="btn btn-success">Registrarse</button>
@@ -65,16 +58,14 @@
                   </form>
               </div>
           </div>
-          <!-- Columna derecha -->
           <div class="col-6 fondo">
               <div class="row">
                   <div class="col">
                       <br>
-                      <!-- Título de bienvenida -->
                       <strong><h1>¡Hola!</h1></strong>
                   </div>
                   <br>
-                  <!-- Mensaje de registro -->
+                  
                   <div class="row">
                       <div class="col">
                           <p>
@@ -83,7 +74,6 @@
                       </div>
                   </div>
                   <br>
-                  <!-- Enlace de inicio de sesión -->
                   <div class="row d-flex justify-center">
                       <div>
                           <p>Ya tienes una cuenta</p>
@@ -99,7 +89,7 @@
 </template>
 
 <style scoped>
-  /* Estilos CSS específicos del componente */
+
   h1 {
       font-size: 25px;
   }
@@ -144,14 +134,14 @@
 // Importa la función 'useToastStore' del módulo '@/store/toast'
 import { useToastStore } from '@/store/toast';
 
-// Exporta el componente
+
 export default {
-  // Nombre del componente
+
   name: 'SignUp',
 
   // Configuración de inicialización
   setup() {
-    // Obtiene la tienda de tostadas utilizando la función 'useToastStore'
+    // Obtiene la tienda  utilizando la función 'useToastStore'
     const toastStore = useToastStore();
 
     // Retorna el objeto 'toastStore' para que esté disponible en el componente
@@ -211,8 +201,8 @@ export default {
           .then(response => {
             // Verifica si el registro fue exitoso
             if (response.data.message === 'success') {
-              // Muestra un mensaje de tostada de éxito
-              this.toastStore.showToast(5000, 'El usuario fue registrado. Por favor inicie sesión');
+              // Muestra un mensaje de  de éxito
+              this.toastStore.showToast(5000, 'El usuario fue registrado. Por favor inicie sesión', 'bg-emerald-500');
 
               // Limpia los campos del formulario después del registro exitoso
               this.form.email = '';
@@ -220,7 +210,7 @@ export default {
               this.form.password1 = '';
               this.form.password2 = '';
             } else {
-              // Muestra un mensaje de tostada de error si algo salió mal durante el registro
+              // Muestra un mensaje  de error si algo salió mal durante el registro
               this.toastStore.showToast(5000, 'Algo salió mal. Por favor vuelve a intentarlo', 'bg-red-300');
             }
           })

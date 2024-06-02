@@ -62,9 +62,9 @@ export default {
                     console.log(response.data)
 
                     if (notification.type_of_notification == 'post_like' || notification.type_of_notification == 'post_comment') {
-                        this.$router.push({name: 'postview', params: {id: notification.post_id}})
+                        this.$router.push({name: 'PostView', params: {id: notification.post_id}})
                     } else {
-                        this.$router.push({name: 'friends', params: {id: notification.created_for_id}})
+                        this.$router.push({name: 'FriendsView', params: {id: notification.created_for_id}})
                     }
                 })
                 .catch(error => {

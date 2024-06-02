@@ -206,10 +206,10 @@ export default {
           this.errors = []
           // Validar campos de entrada
           if (this.form.email === '') {
-              this.errors.push('Your e-mail is missing')
+              this.errors.push('Falta tu correo electrónico')
           }
           if (this.form.password === '') {
-              this.errors.push('Your password is missing')
+              this.errors.push('Falta tu contraseña')
           }
           // Si no hay errores, enviar solicitud de inicio de sesión
           if (this.errors.length === 0) {
@@ -223,7 +223,7 @@ export default {
                   .catch(error => {
                       console.log('error', error)
                       // Mostrar mensaje de error si la solicitud falla
-                      this.errors.push('The email or password is incorrect! Or the user is not activated!')
+                      this.errors.push('¡El correo electrónico o la contraseña son incorrectos! O el usuario no está activado!')
                   })
           }
           // Si no hay errores, obtener información del usuario

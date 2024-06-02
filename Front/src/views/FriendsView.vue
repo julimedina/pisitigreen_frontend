@@ -29,7 +29,7 @@
                 <div class="p-4 text-center bg-gray-100 rounded-lg" v-for="friendshipRequest in friendshipRequests" v-bind:key="friendshipRequest.id">
                     <!-- Avatar y nombre del solicitante -->
                     <img :src="friendshipRequest.created_by.get_avatar" class="mb-6 mx-auto rounded-full">
-                    <p><strong><RouterLink :to="{name: 'ProfileView', params:{id: friendshipRequest.created_by.id}}">{{ friendshipRequest.created_by.name }}</RouterLink></strong></p>
+                    <p><strong><RouterLink :to="{name: 'ProfileView', params:{'id': friendshipRequest.created_by.id}}">{{ friendshipRequest.created_by.name }}</RouterLink></strong></p>
 
                     <!-- Contador de amigos y posts del solicitante -->
                     <div class="mt-6 flex space-x-8 justify-around">
@@ -53,7 +53,7 @@
                 <div class="p-4 text-center bg-gray-100 rounded-lg" v-for="user in friends" v-bind:key="user.id">
                     <!-- Avatar y nombre del amigo -->
                     <img :src="user.get_avatar" class="mb-6 rounded-full">
-                    <p><strong><RouterLink :to="{name: 'ProfileView', params:{id: user.id}}">{{ user.name }}</RouterLink></strong></p>
+                    <p><strong><RouterLink :to="{name: 'ProfileView', params:{'id': user.id}}">{{ user.name }}</RouterLink></strong></p>
 
                     <!-- Contador de amigos y posts del amigo -->
                     <div class="p-2 d-flex justify-content-evenly">
