@@ -1,50 +1,54 @@
 <template>
    
-    <div class="ms-4 mt-4 grid grid-cols-4 gap-4">
-     
-        <div class="main-left col-span-3 space-y-4">
-        
-            <div class="bg-white border border-gray-200 rounded-lg">
+    <div class="container mt-4">
+        <div class="row">
+         
+            <div class="col-lg-9">
                 <!-- Formulario de búsqueda -->
-                <form v-on:submit.prevent="submitForm" class="p-4 flex space-x-4">  
-                    <!-- Input de búsqueda -->
-                    <input v-model="query" type="search" class="p-4 w-full bg-gray-100 rounded-lg" placeholder="Qué estás buscando?">
-                    <!-- Botón de búsqueda -->
-                    <button class="inline-block py-4 px-6 bg-green-700 text-white rounded-lg">
-                        <!-- Ícono de búsqueda -->
-                        <span class="material-icons">
-                            search
-                        </span>
-                    </button>
-                </form>
-            </div>
+                <div class="bg-white border rounded-lg mb-4">
+                    <form v-on:submit.prevent="submitForm" class="p-4 d-flex align-items-center">
+                        <!-- Input de búsqueda -->
+                        <input v-model="query" type="search" class="form-control bg-gray-100 rounded-lg flex-grow-1" placeholder="Qué estás buscando?">
+                        <!-- Botón de búsqueda -->
+                        <button class="btn btn-success ms-2">
+                           
+                            <span class="material-icons">search</span>
+                        </button>
+                    </form>
+                </div>
 
-            <!-- Resultados de búsqueda de usuarios -->
-            <div class="p-4 bg-white border border-gray-200 rounded-lg grid grid-cols-4 gap-4" v-if="users.length">
-                <div class="p-4 text-center bg-gray-100 rounded-lg" v-for="user in users" v-bind:key="user.id">
-                    <!-- Avatar del usuario -->
-                    <img :src="user.get_avatar" class="mb-6 rounded-full">
-                    <!-- Nombre del usuario -->
-                    <p><strong><RouterLink :to="{name: 'ProfileView', params:{'id': user.id}}">{{ user.name }}</RouterLink></strong></p>
-                    <!-- Contadores de amigos y posts -->
-                    <div class="mt-6 flex space-x-8 justify-around">
-                        <p class="text-xs text-gray-500">{{ user.friends_count }} Amigos</p>
-                        <p class="text-xs text-gray-500">{{ user.posts_count }} Posts</p>
+                <!-- Resultados de búsqueda de usuarios -->
+                <div class="row" v-if="users.length">
+                    <div class="col" v-for="user in users" v-bind:key="user.id">
+                        <!-- Detalles del usuario -->
+                        <div class="bg-white border rounded-lg p-4 mb-4">
+                            <!-- Avatar del usuario -->
+                            <img :src="user.get_avatar" class="rounded-full mb-3">
+                            <!-- Nombre del usuario -->
+                            <p class="mb-0"><strong><RouterLink :to="{name: 'ProfileView', params:{'id': user.id}}">{{ user.name }}</RouterLink></strong></p>
+                            <!-- Contadores de amigos y posts -->
+                            <div class="mt-2 d-flex justify-content-between">
+                                <p class="text-muted">Amigos: {{ user.friends_count }}</p>
+                                <p class="text-muted">Posts: {{ user.posts_count }}</p>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <!-- Resultados de búsqueda de posts -->
+                <div v-for="post in posts" v-bind:key="post.id">
+                    <FeedItem v-bind:post="post" />
                 </div>
             </div>
 
-            <!-- Resultados de búsqueda de posts -->
-            <div class="p-4 bg-white border border-gray-200 rounded-lg" v-for="post in posts" v-bind:key="post.id">
-                <FeedItem v-bind:post="post" />
+            <!-- Columna derecha (comentada) -->
+            <!--
+            <div class="col-lg-3">
+                <PersonasQueQuizaConozcas />
+                <TrendsContainer />
             </div>
+            -->
         </div>
-
-      
-        <!--<div class="main-right col-span-1 space-y-4">
-            <PersonasQueQuizaConozcas />
-            <TrendsContainer />
-        </div>-->
     </div>
 </template>
 

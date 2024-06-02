@@ -1,51 +1,49 @@
 <template>
-    <div class=" mt-4 ms-4 grid grid-cols-2 gap-4">
-        <div class="main-left">
-            <div class="p-12">
-                <h1 class="mb-6">Editar perfil</h1>
-
-                <p class="mb-6 text-gray-500">
-                    Llena los campos con los datos correspondientes
-                </p>
-
-                
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="p-4">
+                    <h1 class="mb-4"><strong>Editar perfil</strong></h1>
+                    <p class="mb-4">
+                        Llena los campos con los datos correspondientes
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <div class="main-right">
-            <div class="p-12">
-               <form  v-on:submit.prevent="submitForm">   <!-- evento de submit que llama a submitForm-->
-                    <div>
-                        <label>Nombre</label><br>
-                        <input type="text" v-model="form.name"   class="form-control bg-stone-300  mt-2 py-4 px-6 "><!--Se vincula el campo al modelo "form.name"-->
-                    </div>
-
-                    <div>
-                        <label>E-mail</label><br>
-                        <input type="email" v-model="form.email" class="form-control bg-stone-300  mt-2 py-4 px-6"><!--Se vincula el campo al modelo "form.email"-->
-                    </div>
-
-                    <div>
-                        <label>Avatar</label><br>
-                        <input type="file" ref="file">
-                    </div>
-
-                   
-
-                    <template v-if="errors.length > 0"> <!--condicional que muestra los errores si existen-->
-                        <div class="bg-red-300 p-6">
-                            <p v-for="error in errors" v-bind:key="error">{{ error }}</p><!--bucle que itera sobre los errores y los muestra-->
+            <div class="col-md-6">
+                <div class="p-4">
+                    <form v-on:submit.prevent="submitForm">  <!-- evento de submit que llama a submitForm-->
+                        <div class="form-group mb-3">
+                            <label>Nombre</label><br>
+                            <input type="text" v-model="form.name" class="form-control mt-2"> <!--Se vincula el campo al modelo "form.name"-->
                         </div>
-                    </template>
 
-                    <div>
-                        <button class="py-4 px-6 btn btn-success">Guardar cambios</button>
-                    </div>
-                </form>
+                        <div class="form-group mb-3">
+                            <label>E-mail</label><br>
+                            <input type="email" v-model="form.email" class="form-control mt-2"> <!--Se vincula el campo al modelo "form.email"-->
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label>Avatar</label><br>
+                            <input type="file" ref="file" class="form-control-file">
+                        </div>
+
+                        <template v-if="errors.length > 0">  <!--condicional que muestra los errores si existen-->
+                            <div class="alert alert-danger p-4">
+                                <p v-for="error in errors" v-bind:key="error">{{ error }}</p> <!--bucle que itera sobre los errores y los muestra-->
+                            </div>
+                        </template>
+
+                        <div>
+                            <button class="btn btn-success">Guardar cambios</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </template>
+
 
 <script>
 

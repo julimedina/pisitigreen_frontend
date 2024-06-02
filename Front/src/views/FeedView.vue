@@ -1,27 +1,28 @@
 
 <template>
-    <div class="ms-4 mt-4 grid grid-cols-4 gap-4">
-        <div class="main-center col-span-3 space-y-4">
-            <div class="">
-                <FeedForm  v-bind:user="null"   v-bind:posts="posts"/>
+    <div class="container mt-4 ms-4">
+        <div class="row">
+            <div class="col-md-9 ms-5">
+                <div class="mb-4">
+                    <FeedForm v-bind:user="null" v-bind:posts="posts"/> <!--Se llama el componente Feeform que permite mostrar  el formulario de cada post-->
+                </div>
+
+                <div 
+                    class="p-4 bg-white border rounded mb-4"
+                    v-for="post in posts" 
+                    v-bind:key="post.id">  <!--Se llama el arreglo de posts por medio de su id-->
+                    <FeedItem v-bind:post="post" v-on:deletePost="deletePost"/> <!--Se llama el componente FeedItem que permite mostrar  el body de cada post-->
+                </div>
             </div>
 
-            <div 
-                class="p-4 bg-white border border-gray-200 rounded-lg   "
-                v-for="post in posts" 
-                v-bind:key="post.id"> <!--Se llama el arreglo de posts por medio de su id-->
-                <FeedItem v-bind:post="post" v-on:deletePost="deletePost" /><!--Se llama el componente FeedItem que permite mostrar  el body de cada post-->
-            </div>
+            <!--<div class="col-md-3">
+               <PersonasQueQuizaConozcas 
+                <TrendsContainer />
+            </div>/>--> 
         </div>
-
-        <!--<div class="main-right col-span-1 space-y-4">
-            <PersonasQueQuizaConozcas />
-
-            <TrendsContainer />
-        </div>
-        --> 
     </div>
-</template>    
+</template>
+    
 
 <script>
 import FeedItem from '../components/FeedItem.vue'

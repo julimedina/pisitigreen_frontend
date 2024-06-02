@@ -1,56 +1,59 @@
 <template>
-    
-    <div class="max-w-7xl mx-auto grid grid-cols-4 gap-4">
-        
-        <div class="main-left col-span-1">
-
-            <div class="p-4 bg-white border border-gray-200 text-center rounded-lg">
-               
-                <img :src="user.get_avatar" class="mb-6 rounded-full">
-                <!-- Nombre del usuario -->
-                <p><strong>{{ user.name }}</strong></p>
-                <!-- Contador de amigos y posts -->
-                <div class="mt-6 flex space-x-8 justify-around" v-if="user.id">
-                    <RouterLink :to="{name: 'FriendsView', params: {id: user.id}}" class="text-xs text-gray-500">{{ user.friends_count }} Amigos</RouterLink>
-                    <p>{{ user.posts_count }} posts</p>
+    <div class="container mt-4 mx-auto">
+        <div class="row">
+           
+            <div class="col-lg-3 mb-4">
+                <div class="p-4 bg-white border text-center rounded-lg">
+                    <!-- Avatar del usuario -->
+                    <img :src="user.get_avatar" class="mb-3 rounded-circle img-fluid" alt="Avatar">
+                    <!-- Nombre del usuario -->
+                    <p><strong>{{ user.name }}</strong></p>
+                    <!-- Contador de amigos y posts -->
+                    <div class="mt-3 d-flex justify-content-around" v-if="user.id">
+                        <RouterLink :to="{name: 'FriendsView', params: {id: user.id}}" class="text-muted small">{{ user.friends_count }} Amigos</RouterLink>
+                        <p>{{ user.posts_count }} posts</p>
+                    </div>
+                    <!-- Acciones del usuario -->
+                    <div class="mt-3">
+                        <!-- Editar perfil (visible solo si es el usuario actual) -->
+                        <RouterLink class="btn btn-success me-2" to="/Profile/edit" v-if="userStore.user.id === user.id">
+                            Editar perfil
+                        </RouterLink>
+                        <!-- Enviar solicitud de amistad (visible solo si no es el usuario actual)  -->
+                        <button class="btn btn-primary" @click="sendFriendshipRequest" v-if="userStore.user.id !== user.id && can_send_friendship_request">
+                            Enviar solicitud
+                        </button>
+                        <!-- Cerrar sesión (visible solo si es el usuario actual) -->
+                        <button class="btn btn-info mt-2" @click="logout" v-if="userStore.user.id === user.id">
+                            Cerrar sesión
+                        </button>
+                    </div>
                 </div>
-                <!-- Acciones del usuario -->
-                <div class="mt-6">
-                    <!-- Editar perfil (visible solo si es el usuario actual) -->
-                    <RouterLink class="inline-block mr-2 py-4 px-3 bg-green-700 text-white rounded-lg" to="/Profile/edit" v-if="userStore.user.id === user.id">
-                        Editar perfil
-                    </RouterLink>
-                    <!-- Enviar solicitud de amistad (visible solo si no es el usuario actual)  -->
-                    <button class="inline-block py-4 px-3 bg-purple-600 text-xs text-white rounded-lg" @click="sendFriendshipRequest" v-if="userStore.user.id !== user.id && can_send_friendship_request">
-                       Enviar solicitud
-                    </button>
-                    <!-- Cerrar sesión (visible solo si es el usuario actual) -->
-                    <button class="inline-block py-4 px-3 bg-teal-500 text-white rounded-lg text-xs" @click="logout" v-if="userStore.user.id === user.id">
-                        Cerrar sesión
-                    </button>
+            </div>
+
+            <!-- Columna central -->
+            <div class="col-lg-6">
+                <!-- Formulario para crear un nuevo post (visible solo si es el usuario actual) -->
+                <div v-if="userStore.user.id === user.id" class="mb-4">
+                    <FeedForm v-bind:user="user" v-bind:posts="posts" />
+                </div>
+                <!-- Lista de posts -->
+                <div class="mb-3" v-for="post in posts" v-bind:key="post.id">
+                    <FeedItem v-bind:post="post" v-on:deletePost="deletePost"/>
                 </div>
             </div>
-        </div>
 
-        
-        <div class="main-center col-span-2 ">
-            <!-- Formulario para crear un nuevo post (visible solo si es el usuario actual) -->
-            <div v-if="userStore.user.id === user.id">
-                <FeedForm v-bind:user="user" v-bind:posts="posts" />
+            <!-- Columna derecha (comentada) -->
+            <!--
+            <div class="col-lg-3">
+                <PersonasQueQuizaConozcas />
+                <TrendsContainer />
             </div>
-            <!-- Lista de posts -->
-            <div class="p-4" v-for="post in posts" v-bind:key="post.id">
-                <FeedItem v-bind:post="post" v-on:deletePost="deletePost"/>
-            </div>
+            -->
         </div>
-
-    
-        <!--<div class="main-right col-span-1 space-y-4">
-            <PersonasQueQuizaConozcas />
-            <TrendsContainer />
-        </div>-->
     </div>
 </template>
+
 
 <style>
 /* Estilos para el input tipo archivo */
@@ -58,12 +61,7 @@ input[type="file"] {
     display: none;
 }
 
-.custom-file-upload {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-}
+
 </style>
 
 <script>

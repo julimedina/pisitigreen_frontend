@@ -1,54 +1,42 @@
 <template>
     <div class="text-center mt-5 container">
       <div class="row container-inicio-sesion ">
-       
+      
         <div class="col-6 fondo">
-          
-    
-          <div class="row">
-    
-            <div class="col-sm">
-              
-              <strong><h1>¡Bienvenido!</h1></strong>
-              
-            </div>
-            <br>
-    
-                <div class="row">
-                    <div class="col-sm">
-                        <p>
-                          Ingresa tus datos personales para usar todas las funciones del sitio.
-            
-                        </p>
-    
-                      </div>
-                </div>
-            <br>
-
-                  <div class="row  d-flex d-flex justify-center">
-              
-                    <div class="col-sm">
-                      <p>Aún no tienes una cuenta </p> 
-                    </div>
-                  </div>  
-                    <div class="col-sm">
-                    
-                    <router-link :to ="{'name': 'SignUp'}"  class="btn btn-success">Registrate</router-link>
+              <div class="row">
+                  <div class="col">
+                      <br>
+                      <strong><h1>¡Bienvenido!</h1></strong>
+                  </div>
+                  <br>
                   
-                    </div>
-   
-                </div>
-            
-       </div>
+                  <div class="row">
+                      <div class="col">
+                          <p>
+                            Ingresa tus datos personales para usar todas las funciones del sitio.
+                          </p>
+                      </div>
+                  </div>
+                  <br>
+                  <div class="row d-flex justify-center">
+                      <div>
+                          <p>Aún no tienes una cuenta</p>
+                      </div>
+                      <div>
+                        <router-link :to ="{'name': 'SignUp'}"  class="btn btn-success">Registrate</router-link>
+                      </div>
+                  </div>
+              </div>
+          </div>
 
         <div class="col form-registro mb-5 ms-3 me-3">
     
-    <div class="card card-body mt-5 form-registro">
+        <div class="card card-body mt-5 form-registro">
 
-<form  id="task-form" v-on:submit.prevent="submitForm" >
+        <form  id="task-form" v-on:submit.prevent="submitForm" >
 
 
-<div class="row ">
+        <div class="row ">
 
 <div class="col-sm ">
 <div class="d-flex justify-center">
@@ -167,7 +155,7 @@
        
     }
     .fondo h1{
-      font-size: 60px;
+      font-size: 47px;
     }
     .form-registro{
       border: none;

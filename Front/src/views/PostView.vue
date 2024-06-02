@@ -1,45 +1,42 @@
 <template>
-    <!-- Contenedor principal -->
-    <div class="mt-4 ms-4 grid grid-cols-4 gap-4">
-       
-        <div class="main-center col-span-3 space-y-4">
-    
-            <div class="p-4" v-if="post.id">
-                <!-- Componente FeedItem para mostrar el post -->
-                <FeedItem v-bind:post="post" />
+  
+    <div class="container mt-4 ms-4">
+        <div class="row">
+            <div class="col-lg-9 mb-4">
+                <div v-if="post.id">
+                    <!-- Componente FeedItem para mostrar el post -->
+                    <FeedItem v-bind:post="post" />
+                </div>
+
+                <!-- Comentarios del post -->
+                <div class="p-4 ms-6" v-for="comment in post.comments" v-bind:key="comment.id">
+                    <!-- Componente CommentItem para mostrar cada comentario -->
+                    <CommentItem v-bind:comment="comment" />
+                </div>
+
+                <!-- Formulario para agregar comentario -->
+                <div>
+                    <form v-on:submit.prevent="submitForm" method="post">
+                        <div class="p-4">  
+                            <textarea v-model="body" class="form-control ms-4 me-4" placeholder="¿Qué estás pensando?"></textarea>
+                        </div>
+
+                        <!-- Botón para enviar el comentario -->
+                        <div class="p-4 border-top">
+                            <button class="btn btn-success">Enviar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
-            <!-- Comentarios del post -->
-            <div class="p-4 ms-6" v-for="comment in post.comments" v-bind:key="comment.id">
-                <!-- Componente CommentItem para mostrar cada comentario -->
-                <CommentItem v-bind:comment="comment" />
-            </div>
-
-            <!-- Formulario para agregar comentario -->
-            <div>
-                <form v-on:submit.prevent="submitForm" method="post">
-                
-                    <div class="p-4">  
-                        <textarea v-model="body" class="form-control ms-4 me-4" placeholder="¿Qué estás pensando?"></textarea>
-                    </div>
-
-                    <!-- Botón para enviar el comentario -->
-                    <div class="p-4 border-t border-gray-100">
-                        <button class="inline-block py-4 px-6 btn btn-success">Enviar</button>
-                    </div>
-                </form>
-            </div>
+            <!--  <div class="col-lg-3">
+                <PersonasQueQuizaConozcas />
+                <TrendsContainer />
+            </div> -->
         </div>
-
-      
-         <!--  <div class="main-right col-span-1 space-y-4">
-         
-            <PersonasQueQuizaConozcas />
-             <TrendsContainer />
-           
-        </div> -->
     </div>
 </template>
+
 
 <script>
 
