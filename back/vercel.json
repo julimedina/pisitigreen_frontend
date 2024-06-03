@@ -1,0 +1,26 @@
+{
+    "version": 2,
+    "name": "pistigreen",
+    "builds": [
+      {
+        "src": "back/pistigreen-backend/wsgi.py",
+        "use": "@vercel/python"
+      },
+      {
+        "src": "front/package.json",
+        "use": "@vercel/static-build",
+        "config": { "distDir": "dist" }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "back/pistigreen-backend/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "front/dist/$1"
+      }
+    ]
+  }
+    
