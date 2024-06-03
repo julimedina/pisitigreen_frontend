@@ -106,6 +106,8 @@ pistigreen_frontend/
 │ ├── post
 │ ├── post_attachments
 │ ├── search
+│ ├── .env.development
+│ ├── .env.production
 │ ├── .gitinore
 │ ├── db.sqlite3
 │ ├── gitignore.txt
@@ -125,6 +127,8 @@ pistigreen_frontend/
 │ │ ├── App.vue
 │ │ ├── main.js
 ├── .browserslistrc
+├── .env.development
+├── .env.production
 ├── jsonconfig.json
 ├── package-lock.json
 ├── package.json
