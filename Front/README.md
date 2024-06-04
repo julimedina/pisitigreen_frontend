@@ -53,7 +53,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Backend
 1. Clona el repositorio:
     ```sh
-    git clone https://github.com/Eddu-ER-Tech/pistigreen-backend.git
+    git clone https://github.com/jdjulianam/pistigreen-backend.git
     
     ```
 
@@ -147,4 +147,4 @@ pistigreen_frontend/
 
 
 ## Enlace del despliegue
-<a href="https://front-tau-nine.vercel.app/ ">Despliegue</a>
+<a href="https://pistigreenfront.vercel.app/ ">Despliegue</a>
