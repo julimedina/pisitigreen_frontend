@@ -77,7 +77,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Frontend
 1.Clona el repositorio:
      ```sh
-    git clone https://github.com/jdjulianam/pistigreen_frontend.git
+    git clone https://github.com/julimedina/pisitigreen_frontend.git
     cd front
     ```
 
