@@ -140,11 +140,3 @@ pistigreen_frontend/
 
 
 
-## Enlace del video explicativo
-<a href="https://youtu.be/TYdzIIdHnx4">Parte 1</a> 
-<a href=" https://youtu.be/-U9rAecn2WY">Parte 2</a>
-<a href="https://youtu.be/TYdzIIdHnx4">Parte 3</a> 
-
-
-## Enlace del despliegue
-<a href="https://pistigreenfront.vercel.app/ ">Despliegue</a>
