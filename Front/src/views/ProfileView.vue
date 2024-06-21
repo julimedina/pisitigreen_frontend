@@ -134,9 +134,9 @@ export default {
                     this.can_send_friendship_request = false
 
                     if (response.data.message == 'request already sent') {
-                        this.toastStore.showToast(5000, 'La solicitud ha sido enviada!', 'bg-red-300')
+                        this.toastStore.showToast(5000, 'La solicitud no fue enviada!', 'bg-red-300')
                     } else {
-                        this.toastStore.showToast(5000, 'La solicitud  no fue enviada!', 'bg-emerald-300')
+                        this.toastStore.showToast(5000, 'La solicitud  fue enviada!', 'bg-emerald-300')
                     }
                 })
                 .catch(error => {

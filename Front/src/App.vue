@@ -76,13 +76,13 @@ export default{
     Toast
     
   },
-  beforeCreate(){
-    this.userStore.initStore()
-    const token= this.userStore.user.access
-    if (token){
-    axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+  beforeCreate(){ //se ejecuta antes de que el componente sea creado. inicializar datos(inicio del ciclo de vida)
+    this.userStore.initStore() //Esta función se utiliza para inicializar el estado de la tienda de usuario
+    const token= this.userStore.user.access   //Obtiene el token de acceso del usuario desde userStore.
+    if (token){ // Comprueba si el token de acceso está presente.
+    axios.defaults.headers.common["Authorization"] = "Bearer " + token; //Si el token está presente, configura el encabezado de autorización predeterminado de Axios con el token.
   }else{
-    axios.defaults.headers.common["Authorization"] = "";
+    axios.defaults.headers.common["Authorization"] = "";  //Si el token no está presente, establece el encabezado de autorización de Axios en una cadena vacía.
   }
  }
 }

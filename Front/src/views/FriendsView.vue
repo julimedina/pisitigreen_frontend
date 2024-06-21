@@ -146,7 +146,7 @@ export default {
 
             // Realiza una solicitud POST para manejar la solicitud de amistad (aceptar o rechazar)
             this.$http
-                .post(`/api/friends/${pk}/${status}/`)
+                .post(`/api/friends/${pk}/${status}/`) // Realiza una solicitud POST a la URL  junto con el ID del usuario (pk) y el estado de la solicitud
                 .then(response => {
                     // Loguea la respuesta del servidor
                     console.log('data', response.data)
